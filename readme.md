@@ -13,7 +13,14 @@
 - 개발 : develop
 - 개인 : 각자 닉네임 or 이름
 
-push 순서입니다.
+# 협업 순서
+
+[개발 단계]
 1. 각자의 branch에서 작업
-2. git push origin develop
-3. master branch에 pull request
+2. 각자의 branch에서 develop에 Pull Request
+3. develop branch에서 최소 1명 검열 후 merge 
+
+[배포 단계]
+
+4. develop branch에서 master에 Pull Request
+5. master branch에서 merge
