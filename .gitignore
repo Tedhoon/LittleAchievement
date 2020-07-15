@@ -9,3 +9,7 @@ db.sqlite3-journal
 media
 
 .config_secret/
+
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
