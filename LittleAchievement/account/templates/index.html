@@ -27,11 +27,22 @@
     </ul>
 
     <h5>내 구독 리스트</h5>
-    <ul>
-        {% for my_task in all_my_task %}
-            <li>{{my_task.task}}</li>
-        {%endfor%}
 
-    </ul>
+    <form method="post" action="{% url 'unsubscribe'%}">
+        {%csrf_token%}
+
+        <ul>
+            {% for my_task in all_my_task %}
+            
+            <li>{{my_task.task}} {{my_task.task.maker}}
+                {% if not my_task.task.maker.is_superuser %}
+                <button type="submit" name="unsubscribe_task" value="{{my_task.id}}"> 다른일 하기 </button>
+                {%endif%}
+            </li>
+            {%endfor%}
+            
+        </ul>
+    </form>
+
   </body>
 </html>
