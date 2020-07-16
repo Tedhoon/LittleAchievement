@@ -14,4 +14,4 @@ class DayLog(models.Model):
     count = models.PositiveIntegerField('성취',default = 0)
 
     def __str__(self):
-        return self.date 
+        return str(self.date) 
