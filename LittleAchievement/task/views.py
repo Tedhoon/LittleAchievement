@@ -7,7 +7,7 @@ def subscribe(request):
     
     print("현재 등록된 Task 갯수 ; ", MyTask.objects.filter(user=active_user).count())
 
-    if MyTask.objects.filter(user=active_user).count() < 3 and not MyTask.objects.filter(user=active_user,task = target_task).exists():
+    if MyTask.objects.filter(user=active_user).count() < 5 and not MyTask.objects.filter(user=active_user,task = target_task).exists():
         MyTask.objects.create(user= active_user, task = target_task)
         print("새로운 할일이 등록 되었습니다.")
     return redirect('index')
@@ -20,6 +20,7 @@ def task_managing(request):
         if target_task.user == active_user:
             target_task.delete()
             print("할일이 삭제되었습니다.")
+            
     if request.POST.get('checking_task'):
         checking_task = MyTask.objects.get(id=request.POST.get('checking_task'))
         if checking_task.user == active_user:

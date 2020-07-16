@@ -26,7 +26,7 @@
         </form>
     </ul>
 
-    <h5>내 구독 리스트</h5>
+    <h5>내 구독 리스트</h5> {{complete_task}}  /{{total_task}}
 
     <form method="post" action="{% url 'task_managing'%}">
         {%csrf_token%}

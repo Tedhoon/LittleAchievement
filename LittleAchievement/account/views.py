@@ -10,6 +10,9 @@ def index(request):
     context = dict()
     context['all_common_task'] = CommonTask.objects.all()
     context['all_my_task'] = MyTask.objects.filter(user = request.user, is_checked = False)
+    context['total_task'] = MyTask.objects.filter(user = request.user).count()
+    context['complete_task'] = MyTask.objects.filter(user = request.user, is_checked = True).count()
+
     return render(request, 'index.html',context)
 
 def signup(request):
