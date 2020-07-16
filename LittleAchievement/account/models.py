@@ -11,7 +11,7 @@ from datetime import date
 class DayLog(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE )
     date = models.DateField('날짜', default=date.today)
-    count = models.PositiveIntegerField('성취')
+    count = models.PositiveIntegerField('성취',default = 0)
 
     def __str__(self):
         return self.date 
