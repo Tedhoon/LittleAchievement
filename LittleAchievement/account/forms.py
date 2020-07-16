@@ -16,7 +16,7 @@ class RegisterForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)
-        self.fields['username'].label = "별명"
+        self.fields['username'].label = "닉네임"
         self.fields['password1'].label = "비밀번호"
         self.fields['password2'].label = "비밀번호 확인"
         
