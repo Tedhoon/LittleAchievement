@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    인덱스페이지
-</body>
+  </head>
+  <body>
+    {% if user %}
+    <h1>현재 접속자 : {{user}}</h1>
+    {%endif%} 
+    
+    <h2>메인페이지:</h2>
+    <ul>
+        <form method="post" action="{% url 'subscribe'%}">
+            {%csrf_token%}
+            {%for one_task in all_common_task %}
+
+            
+            
+                <li>{{one_task.name}} <button type="submit" name="subscribe_task" value="{{one_task.id}}"> 구독 </button></li>  
+        
+                    
+            
+            {%endfor%}
+        </form>
+    </ul>
+
+    <h5>내 구독 리스트</h5>
+    <ul>
+        {% for my_task in all_my_task %}
+            <li>{{my_task.task}}</li>
+        {%endfor%}
+
+    </ul>
+  </body>
 </html>
