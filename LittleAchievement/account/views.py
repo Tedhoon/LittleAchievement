@@ -5,6 +5,8 @@ from django.contrib import auth
 from django import forms 
 from .forms import RegisterForm, LoginForm
 from task.models import CommonTask,MyTask
+from django.contrib.auth import authenticate, login
+
 # Create your views here.
 def index(request):
     context = dict()
@@ -19,6 +21,8 @@ def index(request):
     return render(request, 'index.html',context)
 
 def signup(request):
+    if request.user.is_authenticated:
+        return redirect('index')
     if request.method =="POST":
         registerform = RegisterForm(request.POST)
         if registerform.is_valid():
@@ -26,7 +30,11 @@ def signup(request):
             user_instance.set_password(registerform.cleaned_data['password1'])
             user_instance.is_active = True
             user_instance.save()
-            user=User.objects.get(username=registerform.cleaned_data['username'])
+            # user=User.objects.get(username=registerform.cleaned_data['username'])
+            user = authenticate(username=registerform.cleaned_data['username'], password=registerform.cleaned_data['password1'],)
+
+            login(request,user)
+
             return redirect('index')
         else:
             registerform = RegisterForm(request.POST)
@@ -38,6 +46,3 @@ def signup(request):
 class LoginView(LoginView):
     template_name = 'registration/login.html' 
     authentication_form = LoginForm
-
-def login(request):
-    return render(request, 'login.html')
