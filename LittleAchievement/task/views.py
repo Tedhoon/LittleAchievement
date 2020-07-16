@@ -31,15 +31,10 @@ def task_managing(request):
             checking_task.save()
             
             temp_date = date.today()
-            if not DayLog.objects.filter(user = active_user, date = temp_date).exists():
-                DayLog.objects.create(user = active_user, date = temp_date, count = 1)
-                print("오늘의 Log 가 생성되었습니다.")
-            else:
-                log_add_count = DayLog.objects.get(user = active_user, date = temp_date)
-                log_add_count.count += 1 
-                log_add_count.save()
-                print("있는 Log에 추가 되었습니다.")
-
+            
+            log_add_count = DayLog.objects.get(user = active_user, date = temp_date)
+            log_add_count.count += 1 
+            log_add_count.save()
             
             print("하나의 일을 달성 하셨군요! 수고하셨어요!!.")
 
