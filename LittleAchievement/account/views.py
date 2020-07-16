@@ -8,10 +8,14 @@ from task.models import CommonTask,MyTask
 # Create your views here.
 def index(request):
     context = dict()
+    active_user = request.user
     context['all_common_task'] = CommonTask.objects.all()
-    context['all_my_task'] = MyTask.objects.filter(user = request.user, is_checked = False)
-    context['total_task'] = MyTask.objects.filter(user = request.user).count()
-    context['complete_task'] = MyTask.objects.filter(user = request.user, is_checked = True).count()
+
+    if str(active_user) != "AnonymousUser":
+
+        context['all_my_task'] = MyTask.objects.filter(user = active_user, is_checked = False)
+        context['total_task'] = MyTask.objects.filter(user = active_user).count()
+        context['complete_task'] = MyTask.objects.filter(user = active_user, is_checked = True).count()
     return render(request, 'index.html',context)
 
 def signup(request):
