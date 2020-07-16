@@ -6,7 +6,18 @@ from datetime import date
 # class Profile(models.Model):
 #     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 #     username = models.CharField('별명', max_length=10)
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.models import User
+from task.models import CommonTask,MyTask
+@receiver(post_save, sender=User)
+def create_common_task(sender, instance, created, **kwargs):
+    if created:
+        task_list = CommonTask.objects.filter(maker = User.objects.get(username="jang") ).order_by('?')[0:4]
+        for one_task in task_list:
+            MyTask.objects.create(user=instance,task=one_task)
+    
+        
 
 class DayLog(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE )
