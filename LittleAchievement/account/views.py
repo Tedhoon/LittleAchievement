@@ -4,10 +4,13 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django import forms 
 from .forms import RegisterForm, LoginForm
-
+from task.models import CommonTask,MyTask
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    context = dict()
+    context['all_common_task'] = CommonTask.objects.all()
+    context['all_my_task'] = MyTask.objects.filter(user = request.user)
+    return render(request, 'index.html',context)
 
 def signup(request):
     if request.method =="POST":
