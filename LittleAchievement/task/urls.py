@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import subscribe,unsubscribe
+from .views import subscribe,task_managing
 urlpatterns = [
     
     path('subscribe/', subscribe, name="subscribe"),
-    path('unsubscribe/', unsubscribe, name="unsubscribe"),
+    path('task_managing/', task_managing, name="task_managing"),
 
 ]

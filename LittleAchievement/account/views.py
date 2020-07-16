@@ -9,7 +9,7 @@ from task.models import CommonTask,MyTask
 def index(request):
     context = dict()
     context['all_common_task'] = CommonTask.objects.all()
-    context['all_my_task'] = MyTask.objects.filter(user = request.user)
+    context['all_my_task'] = MyTask.objects.filter(user = request.user, is_checked = False)
     return render(request, 'index.html',context)
 
 def signup(request):

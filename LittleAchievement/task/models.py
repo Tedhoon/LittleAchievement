@@ -15,6 +15,8 @@ class CommonTask(models.Model):
 class MyTask(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE )
     task = models.ForeignKey(CommonTask,on_delete=models.CASCADE )  #탈퇴한 사용자꺼 보존
+
+    is_checked = models.BooleanField('한번 해봐요', default=False)
     created = models.DateTimeField(editable=False, default=timezone.now)
 
     def __str__(self):
