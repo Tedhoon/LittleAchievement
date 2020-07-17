@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'taskcreate'%}">Task 작성하러가기</a>
+    <ul>
+    {%for i in task_list%}
+        <li><a href="{% url 'taskupdate' i.id %}">{{i.name}}</a> - {{i.maker}}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
