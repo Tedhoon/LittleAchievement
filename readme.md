@@ -36,4 +36,7 @@
 * 2020-07-17
   * Task CRUD 기능 구현
   * 전체 기록을 남길 필요성이 있어서 Checking되는 부분 totalLog로 기록
+  * Task에 일수 추가 기능
+  * Task Model에 desc , tags, period 추가
+  * 페이지별 요소 재분배, 템플릿 상속
   

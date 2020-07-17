@@ -3,6 +3,22 @@ from .models import CommonTask,MyTask
 from account.models import DayLog,TotalLog
 from datetime import date
 
+
+
+def index(request):
+    context = dict()
+    active_user = request.user
+    # context['all_common_task'] = CommonTask.objects.all()
+
+    if str(active_user) != "AnonymousUser":
+        context['all_my_task'] = MyTask.objects.filter(user = active_user, is_checked = False)
+        context['total_task'] = MyTask.objects.filter(user = active_user).count()
+        context['complete_task'] = MyTask.objects.filter(user = active_user, is_checked = True).count()
+        return render(request, 'index.html',context)
+
+    else:
+        return redirect('signup')
+
 # Create your views here.
 def subscribe(request):
     active_user  = request.user
@@ -13,7 +29,7 @@ def subscribe(request):
     if MyTask.objects.filter(user=active_user).count() < 5 and not MyTask.objects.filter(user=active_user,task = target_task).exists():
         MyTask.objects.create(user= active_user, task = target_task)
         print("새로운 할일이 등록 되었습니다.")
-    return redirect('index')
+    return redirect('tasklist')
 
 def task_managing(request):
     active_user  = request.user
