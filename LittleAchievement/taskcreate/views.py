@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView,UpdateView
 from django.views.generic.list import ListView
 
-from task.models import CommonTask
+from task.models import CommonTask,MyTask
 from django.urls import reverse_lazy
 
 from django.core.exceptions import PermissionDenied
@@ -10,7 +10,7 @@ from django.core.exceptions import PermissionDenied
 # Create your views here.
 class TaskCreate(CreateView):
     model = CommonTask
-    fields = ['name','maker']
+    fields = ['name','maker','desc','tags','period']
     template_name = 'taskcreate.html'
     success_url = reverse_lazy('tasklist')
 
@@ -22,11 +22,17 @@ class TaskList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['task_list'] = CommonTask.objects.all()
+        mytask_qs_list  = MyTask.objects.filter(user = self.request.user)
+        mytask_list = [i.task for i in mytask_qs_list]
+        context['mytask_list'] = mytask_list
+        if len(mytask_list) == 5:
+            context['full_task'] = True
+
         return context
 
 class TaskUpdate(UpdateView):
     model = CommonTask
-    fields = ['name','maker']
+    fields = ['name','maker','desc','tags','period']
     template_name = 'taskupdate.html'
     success_url = reverse_lazy('tasklist')
 

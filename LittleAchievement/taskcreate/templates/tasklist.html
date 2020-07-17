@@ -1,16 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{%extends 'base.html'%}
+{%load static%}
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/task.css' %}">
+
+{% endblock %}
+
+{%block content%}
+
+
+<div class="task_create_btn">
     <a href="{% url 'taskcreate'%}">Task 작성하러가기</a>
-    <ul>
-    {%for i in task_list%}
-        <li><a href="{% url 'taskupdate' i.id %}">{{i.name}}</a> - {{i.maker}}</li>
-    {% endfor %}
-    </ul>
-</body>
-</html>
+</div>
+
+
+<form method="post" action="{% url 'subscribe'%}">
+    {%csrf_token%}
+
+
+    {% if full_task %}
+
+    <h1> 선택하지 못합니다.</h1>
+        {%for one_task in task_list %}
+
+            <li>
+                {{one_task.name}}(출제자 : {{one_task.maker}}) 
+                {%if not one_task in mytask_list%}
+                    <button type="submit" name="subscribe_task" value="{{one_task.id}}">
+                        구독 
+                    </button>
+                {%endif%}
+            </li>
+        {%endfor%}
+
+    {%else%}
+
+    <h1>얘는 선택할수 있음</h1>
+        {%for one_task in task_list %}
+
+            <li>
+                {{one_task.name}}(출제자 : {{one_task.maker}})
+                {%if not one_task in mytask_list%}
+                <button type="submit" name="subscribe_task" value="{{one_task.id}}">
+                    구독
+                </button>
+                {%endif%}
+            </li>
+        {%endfor%}
+
+    {%endif%}
+
+</form>
+
+
+<!-- <ul>
+    
+    
+{%for one_task in task_list%}
+    <li><a href="{% url 'taskupdate' one_task.id %}">{{one_task.name}}</a> - {{one_task.maker}}</li> 
+    <button type="submit" name="subscribe_task" value="{{one_task.id}}">
+        구독 </button>
+{% endfor %}
+
+</ul> -->
+
+{%endblock%}

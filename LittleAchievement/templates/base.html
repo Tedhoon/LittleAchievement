@@ -1,0 +1,33 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개발의 명수</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% block extrahead %}
+
+{% endblock %}
+</head>
+<body>
+    <div class="container">
+        {%block content%}
+        
+    
+        {%endblock%}
+
+    </div>
+    <div class="bottom_nav">
+        <a href="{% url 'index' %}">
+            <div class="bottom_nav_item">메인페이지</div>
+        </a>
+        <a href="{% url 'tasklist' %}">
+        <div class="bottom_nav_item">구독마켓</div>
+        </a>
+        <a href="#">
+            <div class="bottom_nav_item">마이페이지</div>
+        </a>
+    </div>
+</body>
+</html>

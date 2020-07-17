@@ -1,0 +1,29 @@
+body{
+    margin:0;
+    font-size:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+border:2px solid blue;
+position: relative;
+padding:1.5rem;
+}
+.bottom_nav{
+    border:2px solid black;
+    display: flex;
+    position: fixed;
+    bottom:0;
+    width:100vw;
+}
+.bottom_nav > a {
+    flex:1px;
+    border:2px solid red;
+    text-align: center;
+    padding:1rem;
+    cursor: pointer;
+}

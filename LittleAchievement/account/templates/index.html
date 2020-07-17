@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    {% if user %}
-    <h1>현재 접속자 : {{user}}</h1>
+{%extends 'base.html' %}
+{%load static%}
+{%block content%}
+
+
+
+
+{% if user %}
+      <p>현재 접속자 : {{user}}</p>
     {%endif%} 
     
-    <h2>메인페이지:</h2>
-    <ul>
+    <!-- <ul>
         <form method="post" action="{% url 'subscribe'%}">
             {%csrf_token%}
             {%for one_task in all_common_task %}
@@ -20,13 +18,12 @@
             
                 <li>{{one_task.name}}(출제자 : {{one_task.maker}}) <button type="submit" name="subscribe_task" value="{{one_task.id}}"> 구독 </button></li>  
         
-                    
-            
+  
             {%endfor%}
         </form>
-    </ul>
+    </ul> -->
 
-    <h5>내 구독 리스트</h5> {{complete_task}}  /{{total_task}}
+    <h5>내 구독 리스트</h5> 완료한 task : {{complete_task}}  | 오늘의 task : {{total_task}}
 
     <form method="post" action="{% url 'task_managing'%}">
         {%csrf_token%}
@@ -34,7 +31,7 @@
         <ul>
             {% for my_task in all_my_task %}
                 
-            <li>{{my_task.task}} (출제자 : {{my_task.task.maker}})
+            <li>{{my_task.task}}
                 <button type="submit" name="checking_task" value="{{my_task.id}}"> 오늘 했어요! </button>
                 {% if not my_task.task.maker.is_superuser %}
                 <button type="submit" name="unsubscribe_task" value="{{my_task.id}}"> 다른일 하기 </button>
@@ -44,6 +41,4 @@
             
         </ul>
     </form>
-
-  </body>
-</html>
+{%endblock%}
