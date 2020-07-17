@@ -7,6 +7,9 @@ from django.utils import timezone
 class CommonTask(models.Model):
     maker = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.SET_DEFAULT , default ="전학간 친구에요")  #탈퇴한 사용자꺼 보존
     name = models.CharField("할 일", max_length=100)
+    desc = models.TextField("설명",blank = True,default="")
+    tags = models.CharField('태그', max_length=200, default="일상")
+    period = models.PositiveIntegerField("기간", default = 1)
     created = models.DateTimeField(editable=False, default=timezone.now)
 
     def __str__(self):
