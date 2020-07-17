@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import CommonTask,MyTask
-from account.models import DayLog
+from account.models import DayLog,TotalLog
 from datetime import date
 
 # Create your views here.
@@ -26,6 +26,7 @@ def task_managing(request):
             
     if request.POST.get('checking_task'):
         checking_task = MyTask.objects.get(id=request.POST.get('checking_task'))
+        
         if checking_task.user == active_user:
             checking_task.is_checked = True
             checking_task.save()
@@ -35,7 +36,18 @@ def task_managing(request):
             log_add_count = DayLog.objects.get(user = active_user, date = temp_date)
             log_add_count.count += 1 
             log_add_count.save()
-            
+
+            total_log = TotalLog.objects.filter(user = active_user,contents = checking_task.task)
+
+            if total_log.exists():
+                total_log = total_log.first()
+                total_log.count += 1
+                total_log.save()
+                print("지금까지", total_log, "<---- 를",total_log.count,"했습니다")
+            else:
+                TotalLog.objects.create(user = active_user,contents = checking_task.task ,count = 1)
+                print("없어서 토탈 로그를 하나 만들었습니다")
+
             print("하나의 일을 달성 하셨군요! 수고하셨어요!!.")
 
     print("현재 등록된 Task 갯수 ; ", MyTask.objects.filter(user=active_user).count())

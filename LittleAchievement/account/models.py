@@ -26,3 +26,11 @@ class DayLog(models.Model):
 
     def __str__(self):
         return str(self.date) 
+
+class TotalLog(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE )
+    contents = models.CharField("할 일", max_length=100)
+    count = models.PositiveIntegerField('성취',default = 0)
+
+    def __str__(self):
+        return self.contents
