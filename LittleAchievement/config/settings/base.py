@@ -21,6 +21,7 @@ SECRET_KEY = config_secret_base['django']['secret_key']
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -28,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'task',
 ]
 
 MIDDLEWARE = [
@@ -38,6 +40,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'account.custommiddle.ChangeCheckingMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -110,3 +113,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_REDIRECT_URL = "/"

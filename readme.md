@@ -24,3 +24,7 @@
 
 4. develop branch에서 master에 Pull Request
 5. master branch에서 merge
+
+
+### 치훈
+* 2020-07-16 : 구독 기능 추가하기
