@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from datetime import date
 
 # Create your models here.
 
@@ -20,7 +21,7 @@ class MyTask(models.Model):
     task = models.ForeignKey(CommonTask,on_delete=models.CASCADE )  #탈퇴한 사용자꺼 보존
 
     is_checked = models.BooleanField('한번 해봐요', default=False)
-    created = models.DateTimeField(editable=False, default=timezone.now)
+    created = models.DateField("생성일",default=date.today)
 
     def __str__(self):
         return str(self.task) 
