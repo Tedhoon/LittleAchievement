@@ -27,4 +27,13 @@
 
 
 ### 치훈
-* 2020-07-16 : 구독 기능 추가하기
+* 2020-07-16
+  * Sign in , Sign up Flow 개선 작업 및 Authenticate수정
+  * 구독 기능구현
+  * 매일 Checklist초기화 되는 기능 구현
+  * 매일 달성률 기록할수있는 Model생성
+  * 유저 생성시 default mission random으로 분배
+* 2020-07-17
+  * Task CRUD 기능 구현
+  * 전체 기록을 남길 필요성이 있어서 Checking되는 부분 totalLog로 기록
+  
