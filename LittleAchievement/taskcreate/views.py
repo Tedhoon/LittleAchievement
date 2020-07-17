@@ -14,6 +14,15 @@ class TaskCreate(CreateView):
     template_name = 'taskcreate.html'
     success_url = reverse_lazy('tasklist')
 
+    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['task_category'] = ['일상', '스포츠', '교육', '감사']
+        context['period'] = range(1,31)
+        return context
+
+
 class TaskList(ListView):
     model = CommonTask
     # paginate_by = 50
