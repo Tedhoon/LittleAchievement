@@ -1,19 +1,14 @@
-/* body{
-    margin:0;
-    font-size:10px;
-    font-style: normal;
-    font-weight: normal;
-    letter-spacing: 2px;
+ .login_form{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+.register_form{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-} */
-
-
- 
-
+}
 
 .login_letter{
     margin-top: -15rem;
@@ -23,8 +18,6 @@
     height: 110px;
 
 }
-
-
 .input_class{
  width: 72vw;   
  height: 3rem;
@@ -60,5 +53,14 @@ input:focus{
 }
 
 .bottom_nav{
-    display: none;
+    /* display: none; */
+}
+
+
+.index{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -13rem;
+    font-size: 12px;
 }

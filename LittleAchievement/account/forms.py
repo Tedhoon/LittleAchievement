@@ -18,9 +18,22 @@ class RegisterForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)
-        self.fields['username'].label = "닉네임"
-        self.fields['password1'].label = "비밀번호"
-        self.fields['password2'].label = "비밀번호 확인"
+        self.fields['username'].label = ""
+        self.fields['password1'].label = ""
+        self.fields['password2'].label = ""
+        self.fields['username'].widget.attrs.update({
+
+            'placeholder': "ID",
+            'class': "input_class"
+        })
+        self.fields['password1'].widget.attrs.update({
+            'placeholder': "PASSWORD",
+            'class': "input_class"
+        })
+        self.fields['password2'].widget.attrs.update({
+            'placeholder': "PASSWORD",
+            'class': "input_class"
+        })
 
     def clean_password2(self):
         cleaned_password1 = self.cleaned_data.get('password1', '')
