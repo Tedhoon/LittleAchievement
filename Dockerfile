@@ -13,12 +13,13 @@ RUN pip3 install --upgrade pip
 
 # 가상환경 만들고 킵시당
 RUN apt-get install -y virtualenv
-RUN virtualenv -p python3 venv
+CMD virtualenv -p python3 venv
 CMD source /app/LittleAchievement/venv/bin/activate
 
 # pip package 깔자!!!
-RUN pip install -r /app/LittleAchievement/requirements.txt  
-
+# RUN pip install -r /app/LittleAchievement/requirements.txt  
+RUN pip install django
+RUN apt-get install -y build-essential python3.6-dev
 # uwsgi install
 RUN pip install uwsgi 
 
@@ -33,9 +34,9 @@ EXPOSE 8000
 EXPOSE 8080 
 
 
-CMD python manage.py collectstatic
-CMD python manage.py makemigrations
-CMD python manage.py migrate
+CMD python3 manage.py collectstatic
+CMD python3 manage.py makemigrations
+CMD python3 manage.py migrate
 
 CMD uwsgi --ini /app/LittleAchievement/uwsgi.ini 
 
@@ -51,14 +52,17 @@ RUN cp /app/nginx/default /etc/nginx/sites-enabled
 # RUN cp -f /app/LittleAchievement/nginx/nginx.conf /etc/nginx/sites-available/
 # RUN rm -f /etc/nginx/sites-enalbed/*
 # RUN ln -sf /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
-# WORKDIR /app/
+WORKDIR /app/LittleAchievememt/
+CMD python manage.py makemigrations
+CMD python manage.py migrate
 CMD python /app/LittleAchivement/manage.py makemigrations
 # CMD ["python3", "manage.py", "makemigrations"]
 # RUN cat /app/LittleAchivement/manage.py
 RUN cat /etc/nginx/sites-enabled/default
-RUN cat /app/LittleAchievement/task/migrations/0001_initial.py
+# RUN cat /app/LittleAchievement/task/migrations/0001_initial.py
 # nginx 설정해주고
-CMD sudo service nginx reload
+# RUN cat /app/LittleAchievement/venv/bin/
+RUN cat /var/log/nginx/access.log
 
 
-
+RUN service nginx reload
