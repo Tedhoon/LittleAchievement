@@ -47,7 +47,7 @@ RUN ln -sf /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
 
 
 # nginx 설정해주고
-RUN sudo service nginx reload
+CMD sudo service nginx reload
 
 
 
