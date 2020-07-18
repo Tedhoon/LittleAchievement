@@ -1,17 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1> Task Update</h1>
-    <form method="POST"> 
-        {%csrf_token%}
-        {{form.as_p}}
-        <button type="submit"> 수정 </button>
-        <a href="{% url 'taskdelete' task.id  %}">삭제</a> 
-    </form>
-</body>
-</html>
+{%extends 'base.html'%}
+{%load static%}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/task.css' %}">
+
+{% endblock %}
+
+{%block content%}
+
+<h1> Task Creates</h1>
+<form method="POST">
+    {%csrf_token%}
+    {% for field in form %}
+    {%if not field.label == "Maker" and not field.label == "태그" and not field.label == "기간" and not field.label == "리스트여부" %}
+    <h6>{{field.label}} : {{field}}</h6>
+
+    {%endif%}
+    {%endfor%}
+    <input type="hidden" name="maker" value="{{request.user.id}}" />
+
+    <div class="dropdown">
+        {%if task.tags %}
+            <input id="id_tags" type="hidden" name="tags" value="{{task.tags}}" />
+            <div class="dropdown_display">{{task.tags}}<span>▼</span></div>
+
+        {%else%}
+            <input id="id_tags" type="hidden" name="tags" value="일상" />
+            <div class="dropdown_display"> 분야 <span>▼</span></div>
+
+        {%endif%}
+        <div class="dropdown_itembox">
+            {%for category in task_category %}
+                <div class="dropdown_item">{{category}}</div>
+            {%endfor%}
+        </div>
+    </div>
+
+    <div class="dropdown2">
+        {%if task.period %}
+            <input id="id_period" type="number" name="period" value={{task.period}} />
+            <div class="dropdown2_display"> {{task.period}}일 동안 <span>▼</span></div>
+        {%else%}
+            <input id="id_period" type="number" name="period" value=0 />
+            <div class="dropdown2_display"> 기간 <span>▼</span></div>
+        {%endif%}
+
+        <div class="dropdown2_itembox dropdown2_height">
+            {% for day in period %}
+                <div class="dropdown2_item">{{day}}일 동안</div>
+            {%endfor%}
+
+        </div>
+    </div>
+
+    
+    {% if task.is_list == "True" %}
+    <input id="id_is_list" type="checkbox" name="is_list" checked value="{{task.is_list}}">
+    <label id="fake_is_list" for="id_is_list">
+        <div id="toggle_btn">多</div>
+    </label>
+
+    <div id="task_list_area">
+        {% for day_task in task.detailtasklist_set.all %}
+       
+        <label>{{forloop.counter}}일 째</label>
+        <input type='text' name='tasklist{{forloop.counter0}}' value="{{day_task.desc}}"/><br>
+
+        {%endfor%}
+    </div>
+    {%else%}
+    <input id="id_is_list" type="checkbox" name="is_list" value="{{task.is_list}}">
+    <label id="fake_is_list" for="id_is_list">
+        <div id="toggle_btn">少</div>
+    </label>
+
+    <div id="task_list_area">TASK LIST AREA</div>
+    {%endif%}
+    <h5><button type="submit"> 제출 </button></h5>
+</form>
+
+<script type="text/javascript" src="{% static 'js/task.js'%}"></script>
+
+{%endblock%}

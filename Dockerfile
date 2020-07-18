@@ -39,10 +39,15 @@ CMD python manage.py migrate
 
 CMD uwsgi --ini /app/LittleAchievement/uwsgi.ini 
 
-# 근데 얘는 run인감?
+
+# nginx 설정
+RUN cp -f /app/nginx/nginx.conf /etc/nginx/sites-available/
+RUN rm -f /etc/nginx/sites-enalbed/*
+RUN ln -sf /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
+
 
 # nginx 설정해주고
-# RUN sudo service nginx reload
+RUN sudo service nginx reload
 
 
 
