@@ -1,49 +1,49 @@
-FROM ubuntu:18.04
+FROM python:3.6
 
-# code copying
+RUN apt-get update \ 
+	&& apt-get install -y --no-install-recommends \
+		postgresql-client \
+	&& rm -rf /var/lib/apt/lists/*
+
 COPY . /app
+# 나의 Django 코드를 컨테이너에 복사합니다.
+
 WORKDIR /app/LittleAchievement/
+# 요놈은 CMD 관련이네!
 
-# ubuntu 기본 세팅으으으으
-RUN apt-get update
-RUN apt-get install -y build-essential
-RUN apt-get install -y python3
-RUN apt-get install -y python3-pip
-RUN pip3 install --upgrade pip
+# RUN pip install -r /app/LittleAchievement/requirements.txt  
+RUN pip install django
+# requirements.txt에 적혀있는 pip 패키지들을 설치합니다.
+# requirements.txt경로 /home/ubuntu/LittleAchievement/config/requirements.txt
 
-# 가상환경 만들고 킵시당
-RUN apt-get install -y virtualenv
-RUN virtualenv -p python3 venv
-CMD source /app/LittleAchievement/venv/bin/activate
+# RUN chmod 755 /app/start  
+# start 파일을 실행 가능하게 합니다.
+# chmod 755 /home/ubuntu/LittleAchievement/start  
 
-# pip package 깔자!!!
-RUN pip install -r /app/LittleAchievement/requirements.txt  
+# /home/ubuntu/-
+# 워킹디렉토리를 /app으로 합니다.
 
-# uwsgi install
-RUN pip install uwsgi 
+EXPOSE 8000  
+# 8000번 포트를 expose합니다.
 
-# 이줴 nginx
-RUN apt-get install -y nginx
-
-
-
-# expose port 
-EXPOSE 80 
-EXPOSE 8000
-EXPOSE 8080 
-
-
-CMD python manage.py collectstatic
-CMD python manage.py makemigrations
-CMD python manage.py migrate
-
-CMD uwsgi --ini /app/LittleAchievement/uwsgi.ini 
-
-# CMD nohup python manage.py runserver 0.0.0.0:8000
-# 근데 얘는 run인감?
-
-# nginx 설정해주고
-# RUN sudo service nginx reload
+# ENTRYPOINT ["/app/start"]  
+# /app/start 파일을 실행시킵니다.
+# start => 
+    # python manage.py makemigrations
+    # python manage.py migrate
+    # python manage.py runserver 0.0.0.0:8000
 
 
 
+# COPY requirements.txt ./
+# RUN pip install -r requirements.txt
+# COPY . .
+# WORKDIR /app/LittleAchievement
+
+CMD ["python", "manage.py", "makemigrations"]
+
+CMD ["python", "manage.py", "migrate"]
+
+# CMD ["python", "manage.py", "collectstatic"]
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

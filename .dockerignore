@@ -7,4 +7,6 @@ docker-compose*
 */obj
 readme.md
 LICENSE
+
+venv
 .vscode
