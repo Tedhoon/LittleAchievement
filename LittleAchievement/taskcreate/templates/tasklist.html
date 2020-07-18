@@ -40,9 +40,7 @@
             <li>
                 {{one_task.name}}(출제자 : {{one_task.maker}})
                 {%if not one_task in mytask_list%}
-                {%if one_task.maker == request.user %}
-                    <a href="{% url 'taskupdate' one_task.id %}">수정하자</a>
-                {%endif%}
+ 
                 <button type="submit" name="subscribe_task" value="{{one_task.id}}">
                     구독
                 </button>
@@ -54,16 +52,5 @@
 
 </form>
 
-
-<!-- <ul>
-    
-    
-{%for one_task in task_list%}
-    <li><a href="{% url 'taskupdate' one_task.id %}">{{one_task.name}}</a> - {{one_task.maker}}</li> 
-    <button type="submit" name="subscribe_task" value="{{one_task.id}}">
-        구독 </button>
-{% endfor %}
-
-</ul> -->
 
 {%endblock%}

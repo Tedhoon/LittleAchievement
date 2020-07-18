@@ -14,6 +14,7 @@ def index(request):
         context['all_my_task'] = MyTask.objects.filter(user = active_user, is_checked = False)
         context['total_task'] = MyTask.objects.filter(user = active_user).count()
         context['complete_task'] = MyTask.objects.filter(user = active_user, is_checked = True).count()
+        
         return render(request, 'index.html',context)
 
     else:
