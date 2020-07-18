@@ -5,16 +5,16 @@ COPY . /app
 WORKDIR /app/LittleAchievement/
 
 # ubuntu 기본 세팅으으으으
-RUN sudo apt-get update
-RUN sudo apt-get install build-essential
-RUN sudo apt-get install python3
-RUN sudo apt-get install python3-pip
-RUN sudo pip3 install --upgrade pip
+RUN apt-get update
+RUN apt-get install -y build-essential
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+RUN pip3 install --upgrade pip
 
 # 가상환경 만들고 킵시당
-RUN sudo apt-get install virtualenv
+RUN apt-get install -y virtualenv
 RUN virtualenv -p python3 venv
-RUN source /app/LittleAchievement/venv/bin/activate
+CMD source /app/LittleAchievement/venv/bin/activate
 
 # pip package 깔자!!!
 RUN pip install -r /app/LittleAchievement/requirements.txt  
@@ -23,7 +23,7 @@ RUN pip install -r /app/LittleAchievement/requirements.txt
 RUN pip install uwsgi 
 
 # 이줴 nginx
-RUN sudo apt-get install nginx
+RUN apt-get install -y nginx
 
 
 
@@ -37,16 +37,13 @@ CMD python manage.py collectstatic
 CMD python manage.py makemigrations
 CMD python manage.py migrate
 
-RUN uwsgi --ini /app/LittleAchievement/uwsgi.ini 
+CMD uwsgi --ini /app/LittleAchievement/uwsgi.ini 
+
+CMD nohup python manage.py runserver 0.0.0.0:8000
 # 근데 얘는 run인감?
 
 # nginx 설정해주고
-RUN sudo service nginx reload
+# RUN sudo service nginx reload
 
 
 
-
-
-WORKDIR /app/LittleAchievement/
-
-RUN pip install -r /app/LittleAchievement/requirements.txt  

@@ -1,0 +1,19 @@
+version: '2'
+services:
+nginx:
+  image: nginx:latest # nginx 서비스에서 사용할 도커 이미지
+  ports:
+    - "80:80"
+  volumes:
+    - .:/code
+    - ./config/nginx:/etc/nginx/conf.d
+  depends_on: # 서비스 간의 종속성 표현
+    - web
+web:  
+  build:
+    dockerfile : Dockerfile
+  command: gunicorn <프로젝트 이름>.wsgi:application --bind 0.0.0.0:8000
+  volumes:
+    - .:/code
+  expose:
+    - "8000"
