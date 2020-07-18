@@ -33,10 +33,6 @@ server {
                 include /etc/nginx/uwsgi_params;
                 uwsgi_pass django;
         }
-        location / {
-		#
-		#
-        }
         location /static/ {
             alias /app/LittleAchivement/basestatic/;
         }
