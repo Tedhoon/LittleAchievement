@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+{%load static%}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/task.css' %}">
+
+{% endblock %}
+
+{%block content%}
+
+    <h1> Task Creates</h1>
+    <form method="POST"> 
+        {%csrf_token%}
+        {% for field in form %}
+            {%if not field.label == "Maker" and not field.label == "태그" and not field.label == "기간"  %}
+            <h6>{{field.label}} : {{field}}</h6>
+                   
+            {%endif%}
+        {%endfor%}
+        <input type="hidden" name="maker" value="{{request.user.id}}" />
+
+        <div class="dropdown">
+            <input id="id_tags" type="hidden" name="tags" value="일상" />
+            <div class="dropdown_display"> 분야 <span>▼</span></div>
+            <div class="dropdown_itembox">
+                {%for category in task_category %}
+                    <div class="dropdown_item">{{category}}</div>
+                {%endfor%}
+            </div>
+        </div>
+
+        <div class="dropdown2">
+            <input id ="id_period" type="number" name="period" value= 0 />
+            
+            <div class="dropdown2_display"> 기간 <span>▼</span></div>
+            <div class="dropdown2_itembox dropdown2_height">
+                {% for day in period %}
+                <div class="dropdown2_item">{{day}}일 동안</div>
+                {%endfor%}
+        
+            </div>
+        </div>
+
+        <h5><button type="submit"> 제출 </button></h5>
+    </form>
+
+    <script type="text/javascript" src="{% static 'js/task.js'%}"></script>
+
+{%endblock%}

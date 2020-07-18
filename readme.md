@@ -24,3 +24,19 @@
 
 4. develop branch에서 master에 Pull Request
 5. master branch에서 merge
+
+
+### 치훈
+* 2020-07-16
+  * Sign in , Sign up Flow 개선 작업 및 Authenticate수정
+  * 구독 기능구현
+  * 매일 Checklist초기화 되는 기능 구현
+  * 매일 달성률 기록할수있는 Model생성
+  * 유저 생성시 default mission random으로 분배
+* 2020-07-17
+  * Task CRUD 기능 구현
+  * 전체 기록을 남길 필요성이 있어서 Checking되는 부분 totalLog로 기록
+  * Task에 일수 추가 기능
+  * Task Model에 desc , tags, period 추가
+  * 페이지별 요소 재분배, 템플릿 상속
+  
