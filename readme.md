@@ -41,3 +41,5 @@
   * 페이지별 요소 재분배, 템플릿 상속
   * Task Create Page change display field
   * Task Create PAge Period Task List Toggle ADD
+  * Task Update 구현했는데 숨겨놓음
+  * Task List도 했다는 체크 할수 있게 함
