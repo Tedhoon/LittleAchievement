@@ -1,33 +1,41 @@
 {%load static%}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>개발의 명수</title>
+    <script src="https://kit.fontawesome.com/703c3b8202.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static 'images/명수.png' %}" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-{% block extrahead %}
+    {% block extrahead %}
 
-{% endblock %}
+    {% endblock %}
 </head>
+
 <body>
     <div class="container">
-        {%block content%}
-        
-    
-        {%endblock%}
+        <img src="{% static 'css/main.png' %}" alt="" class='back_img'>
 
+        {% block content %}
+        {% endblock %}
+
+
+
+        <div class="bottom_nav">
+            <a href="{% url 'index' %}">
+                <div class="bottom_nav_item"><i class="fas fa-home fa-2x"></i></div>
+            </a>
+            <a href="{% url 'tasklist' %}">
+                <div class="bottom_nav_item"> <i class="fas fa-list fa-2x"></i></div>
+            </a>
+            <a href="#">
+                <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
+            </a>
+        </div>
     </div>
-    <div class="bottom_nav">
-        <a href="{% url 'index' %}">
-            <div class="bottom_nav_item">메인페이지</div>
-        </a>
-        <a href="{% url 'tasklist' %}">
-        <div class="bottom_nav_item">구독마켓</div>
-        </a>
-        <a href="#">
-            <div class="bottom_nav_item">마이페이지</div>
-        </a>
-    </div>
+
 </body>
+
 </html>

@@ -14,10 +14,11 @@ def index(request):
         context['all_my_task'] = MyTask.objects.filter(user = active_user, is_checked = False)
         context['total_task'] = MyTask.objects.filter(user = active_user).count()
         context['complete_task'] = MyTask.objects.filter(user = active_user, is_checked = True).count()
+        
         return render(request, 'index.html',context)
 
     else:
-        return redirect('signup')
+        return redirect('login')
 
 # Create your views here.
 def subscribe(request):
@@ -63,8 +64,7 @@ def task_managing(request):
             else:
                 TotalLog.objects.create(user = active_user,contents = checking_task.task ,count = 1)
                 print("없어서 토탈 로그를 하나 만들었습니다")
-
-            print("하나의 일을 달성 하셨군요! 수고하셨어요!!.")
+            
 
     print("현재 등록된 Task 갯수 ; ", MyTask.objects.filter(user=active_user).count())
     return redirect('index')
