@@ -36,6 +36,15 @@ class LoginForm(AuthenticationForm):
         super(LoginForm, self).__init__(*args, **kwargs)
         self.fields['username'].label = ""
         self.fields['password'].label = ""
+        self.fields['username'].widget.attrs.update({
+
+            'placeholder': "ID",
+            'class': "input_class"
+        })
+        self.fields['password'].widget.attrs.update({
+            'placeholder': "PASSWORD",
+            'class': "input_class"
+        })
 
     error_messages = {
         'invalid_login': (
