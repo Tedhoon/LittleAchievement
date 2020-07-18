@@ -39,9 +39,6 @@ CMD python manage.py migrate
 
 CMD uwsgi --ini /app/LittleAchievement/uwsgi.ini 
 
-# CMD nohup python manage.py runserver 0.0.0.0:8000
-# 근데 얘는 run인감?
-
 
 # nginx 설정
 
