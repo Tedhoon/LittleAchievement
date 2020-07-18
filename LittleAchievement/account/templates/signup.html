@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="POST" action="{% url 'signup' %}">
-        {% csrf_token %}
-        <div>{% for i in RegisterForm %}
-            {{i}}
-            {{i.errors}}
+{% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+    <div>{% for i in RegisterForm %}
+        {{i}}
+        {{i.errors}}
         {% endfor %}
-        </div>
-        <input type="submit" value="다음">
-    </form>
-</body>
-</html>
+    </div>
+    <input type="submit" value="다음">
+</form>
+{% endblock %}
