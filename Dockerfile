@@ -44,7 +44,7 @@ CMD uwsgi --ini /app/LittleAchievement/uwsgi.ini
 
 
 # nginx 설정
-RUN cp -f /app/LittleAchievement/nginx/nginx.conf /etc/nginx/sites-available/
+RUN cp -f /app/nginx/nginx.conf /etc/nginx/sites-available/
 RUN rm -f /etc/nginx/sites-enalbed/*
 RUN ln -sf /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
 
