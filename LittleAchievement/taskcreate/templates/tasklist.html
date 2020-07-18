@@ -1,55 +1,64 @@
 {%extends 'base.html'%}
 {%load static%}
 {% block extrahead %}
-    <link rel="stylesheet" href="{% static 'css/task.css' %}">
-
+<link rel="stylesheet" href="{% static 'css/task.css' %}">
 {% endblock %}
 
 {%block content%}
 
 
-<div class="task_create_btn">
-    <a href="{% url 'taskcreate'%}">Task 작성하러가기</a>
-</div>
 
-
-<form method="post" action="{% url 'subscribe'%}" >
+<form method="post" action="{% url 'subscribe'%}">
     {%csrf_token%}
 
 
     {% if full_task %}
 
     <h1> 선택하지 못합니다.</h1>
-        {%for one_task in task_list %}
+    {%for one_task in task_list %}
 
-            <li>
-                {{one_task.name}}(출제자 : {{one_task.maker}}) 
-                {%if not one_task in mytask_list%}
-                    <button type="submit" name="subscribe_task" value="{{one_task.id}}">
-                        구독 
-                    </button>
-                {%endif%}
-            </li>
-        {%endfor%}
+    <li>
+        <div class="each_list">
+
+            {{one_task.name}}(출제자 : {{one_task.maker}})
+            {%if not one_task in mytask_list%}
+
+            <button type="submit" name="subscribe_task" value="{{one_task.id}}">
+                구독
+            </button>
+        </div>
+        {%endif%}
+        </div>
+    </li>
+    {%endfor%}
 
     {%else%}
 
-    <h1>얘는 선택할수 있음</h1>
-        {%for one_task in task_list %}
+    <h1>소소한 일상을 구독해요</h1>
+    {%for one_task in task_list %}
 
-            <li>
+    <li>
+        <div class="each_list">
+            <div class="each_list_left">
                 {{one_task.name}}(출제자 : {{one_task.maker}})
                 {%if not one_task in mytask_list%}
- 
+            </div>
+            <div class="each_list_right">
                 <button type="submit" name="subscribe_task" value="{{one_task.id}}">
                     구독
                 </button>
-                {%endif%}
-            </li>
-        {%endfor%}
+            </div>
+            {%endif%}
+        </div>
+    </li>
+    {%endfor%}
 
     {%endif%}
-
+    <a href="{% url 'taskcreate'%}">
+        <div class="task_create_btn">
+            Task 작성하기
+        </div>
+    </a>
 </form>
 
 
