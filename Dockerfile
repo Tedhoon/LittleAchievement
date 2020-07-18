@@ -4,6 +4,10 @@ FROM ubuntu:18.04
 COPY . /app
 WORKDIR /app/LittleAchievement/
 
+# cache 지우기
+# RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+# RUN apt-get install -y dialog apt-utils 
+
 # ubuntu 기본 세팅으으으으
 RUN apt-get update
 RUN apt-get install -y build-essential
@@ -12,16 +16,17 @@ RUN apt-get install -y python3-pip
 RUN pip3 install --upgrade pip
 
 # 가상환경 만들고 킵시당
-RUN apt-get install -y virtualenv
-CMD virtualenv -p python3 venv
+# RUN apt-get install -y virtualenv
+# CMD virtualenv -p python3 venv
 CMD source /app/LittleAchievement/venv/bin/activate
 
 # pip package 깔자!!!
 # RUN pip install -r /app/LittleAchievement/requirements.txt  
-RUN pip install django
-RUN apt-get install -y build-essential python3.6-dev
+# RUN pip install django
+# RUN apt-get install -y build-essential python3.6-dev
 # uwsgi install
-RUN pip install uwsgi 
+# RUN pip install uwsgi 
+
 
 # 이줴 nginx
 RUN apt-get install -y nginx
@@ -63,6 +68,6 @@ RUN cat /etc/nginx/sites-enabled/default
 # nginx 설정해주고
 # RUN cat /app/LittleAchievement/venv/bin/
 RUN cat /var/log/nginx/access.log
-
+RUN cat /app/LittleAchievement/uwsgi.sock
 
 RUN service nginx reload
