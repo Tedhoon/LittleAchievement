@@ -3,15 +3,30 @@ li{
     color: white;
 
 }
+
+@font-face{
+    font-family: 'NEXON_Lv1_Gothic';
+    src: url("../images/NEXON_Lv1_Gothic.otf");
+
+} 
+
+* { 
+    box-sizing: border-box;
+    font-family: 'NEXON_Lv1_Gothic';
+}
+
+
 h1 {
     color: white;
     font-size: 20px;
     text-align: center;
 }
-a{
+
+/* a{
     position: absolute;
     bottom: 0px;
-}
+} */
+
 
 .each_list{
     display: flex;
@@ -33,12 +48,26 @@ a{
     width: 80%;
     font-size: 13px;
     font-weight: bold;
+    text-align: left;
 }
 .each_list_right{
     width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #1858b8;
+    border-radius: 0px 13px 13px 0px;
+    height: 3.5rem;
+}
+.button{
+    border: none;
+    background-color: #1858b8;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .add_btn{
@@ -50,16 +79,18 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: absolute;
-    font-size: 8px;
     text-align: center;
-    background-color: rgb(22, 54, 122);
+    border: 2px solid #4677c2;
+    opacity: 0.8;
+    background-color: #4677c2;
     /* right:3rem; */
     bottom: 9rem;
     width:80vw;
     height:50px;
     border-radius: 13px;
+    font-size: 18px;
+
 
 }
 
@@ -117,7 +148,7 @@ form{
     left:-1rem;
 }
 ::-webkit-scrollbar-track-piece {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 1rem;

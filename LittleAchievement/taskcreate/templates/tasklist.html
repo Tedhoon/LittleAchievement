@@ -2,6 +2,8 @@
 {%load static%}
 {% block extrahead %}
 <link rel="stylesheet" href="{% static 'css/task.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
 {% endblock %}
 
 {%block content%}
@@ -44,7 +46,7 @@
                 {%if not one_task in mytask_list%}
             </div>
             <div class="each_list_right">
-                <button type="submit" name="subscribe_task" value="{{one_task.id}}">
+                <button class='button' type="submit" name="subscribe_task" value="{{one_task.id}}">
                     구독
                 </button>
             </div>
