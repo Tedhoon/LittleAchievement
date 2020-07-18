@@ -44,13 +44,20 @@ CMD uwsgi --ini /app/LittleAchievement/uwsgi.ini
 
 
 # nginx 설정
-RUN cp -f /app/nginx/nginx.conf /etc/nginx/sites-available/
-RUN rm -f /etc/nginx/sites-enalbed/*
-RUN ln -sf /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
+
+RUN rm -rf /etc/nginx/nginx.conf 
+RUN rm -rm /etc/nginx/sites-enabled/default
+# 바꾸기 위해 일단 지우고
+
+RUN cp /app/LittleAchievement/nginx/nginx.conf /etc/nginx/
+RUN cp /app/LittleAchievement/nginx/default /etc/nginx/sites-enabled
+# RUN cp -f /app/LittleAchievement/nginx/nginx.conf /etc/nginx/sites-available/
+# RUN rm -f /etc/nginx/sites-enalbed/*
+# RUN ln -sf /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
 
 
 # nginx 설정해주고
-RUN sudo service nginx reload
+CMD sudo service nginx reload
 
 
 
