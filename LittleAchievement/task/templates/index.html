@@ -1,16 +1,23 @@
 {%extends 'base.html' %}
 {%load static%}
+<<<<<<< HEAD:LittleAchievement/task/templates/index.html
 {% load customfilter %}
 
 {%block content%}
+=======
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+>>>>>>> 0c36f3d7b631accf9958ad7609a6f9cf79a08c4c:LittleAchievement/account/templates/index.html
+
+{% endblock %}
 
 
+{%block content%}
+<div class="index">
+    {% if user %}
+    <p>현재 접속자 : {{user}}</p>
+    {% endif %}
 
-
-{% if user %}
-      <p>현재 접속자 : {{user}}</p>
-    {%endif%} 
-    
     <!-- <ul>
         <form method="post" action="{% url 'subscribe'%}">
             {%csrf_token%}
@@ -25,10 +32,11 @@
         </form>
     </ul> -->
 
-    <h5>내 구독 리스트</h5> 완료한 task : {{complete_task}}  | 오늘의 task : {{total_task}}
+    <h5>내 구독 리스트</h5> 완료한 task : {{complete_task}} | 오늘의 task : {{total_task}}
+</div>
 
-    <form method="post" action="{% url 'task_managing'%}">
-        {%csrf_token%}
+<form method="post" action="{% url 'task_managing'%}">
+    {%csrf_token%}
 
         <ul>
             {% for my_task in all_my_task %}

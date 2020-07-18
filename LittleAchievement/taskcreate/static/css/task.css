@@ -1,7 +1,7 @@
 .task_create_btn{
     position: absolute;
     right:3rem;
-    bottom:5rem;
+    bottom: 9rem;
     border:2px solid green;
     border-radius: 20px;
     width:50px;
@@ -90,6 +90,7 @@ form{
 #id_period{
     display: none;
 }
+<<<<<<< HEAD
 
 #fake_is_list{
     border:2px solid #ccc;
@@ -136,3 +137,5 @@ form{
 }
 
 
+=======
+>>>>>>> 0c36f3d7b631accf9958ad7609a6f9cf79a08c4c
