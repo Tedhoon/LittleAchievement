@@ -10,6 +10,10 @@
 
 }
 
+form{
+    height:80vh;
+    overflow-y: scroll;
+}
 
 /* 드롭다운 구현 */
 .dropdown,.dropdown2{
@@ -82,6 +86,56 @@
 
 }
 
+/* namefiled none */
 #id_period{
     display: none;
 }
+<<<<<<< HEAD
+
+#fake_is_list{
+    border:2px solid #ccc;
+    border-radius: 5px;
+    width:4rem;
+    height:1.5rem;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    cursor: pointer;
+}
+#toggle_btn{
+    width:2rem;
+    height:2rem;
+    background:#aaa;
+    color:white;
+    border-radius: 50%;
+    margin:0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    left: -0.5rem;
+    top:-0.4rem;
+
+    
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+#id_is_list:checked + #fake_is_list{
+    background-color: #aaa;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+}
+
+#id_is_list:checked + #fake_is_list > #toggle_btn{
+    /* border:2px solid green; */
+    background-color:#777;
+
+    left: 2.1rem;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+}
+
+
+=======
+>>>>>>> 0c36f3d7b631accf9958ad7609a6f9cf79a08c4c
