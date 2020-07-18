@@ -17,7 +17,7 @@ def index(request):
         return render(request, 'index.html',context)
 
     else:
-        return redirect('signup')
+        return redirect('login')
 
 # Create your views here.
 def subscribe(request):

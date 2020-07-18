@@ -39,4 +39,5 @@
   * Task에 일수 추가 기능
   * Task Model에 desc , tags, period 추가
   * 페이지별 요소 재분배, 템플릿 상속
-  
+  * Task Create Page change display field
+  * Task Create PAge Period Task List Toggle ADD
