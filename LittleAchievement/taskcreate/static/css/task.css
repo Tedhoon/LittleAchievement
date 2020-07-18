@@ -1,12 +1,96 @@
-.task_create_btn{
+li{
+    list-style: none;
+    color: white;
+
+}
+
+@font-face{
+    font-family: 'NEXON_Lv1_Gothic';
+    src: url("../images/NEXON_Lv1_Gothic.otf");
+
+} 
+
+* { 
+    box-sizing: border-box;
+    font-family: 'NEXON_Lv1_Gothic';
+}
+
+
+h1 {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* a{
     position: absolute;
-    right:3rem;
+    bottom: 0px;
+} */
+
+
+.each_list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    border-radius: 13px;
+    margin-top: 1.5rem;
+    height: 3.5rem;
+    font-size: 12px;
+    background-color: #4677c2;
+    box-shadow: -15px 15px 4px rgba(0, 0, 0, 0.25); 
+
+    /* text-align: center; */
+}
+
+.each_list_left{
+    padding-left: 8px;
+    width: 80%;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: left;
+}
+.each_list_right{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1858b8;
+    border-radius: 0px 13px 13px 0px;
+    height: 3.5rem;
+}
+.button{
+    border: none;
+    background-color: #1858b8;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.add_btn{
+    background-color: white;
+}
+
+
+.task_create_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    text-align: center;
+    border: 2px solid #4677c2;
+    opacity: 0.8;
+    background-color: #4677c2;
+    /* right:3rem; */
     bottom: 9rem;
-    border:2px solid green;
-    border-radius: 20px;
-    width:50px;
+    width:80vw;
     height:50px;
-    border-radius: 50%;
+    border-radius: 13px;
+    font-size: 18px;
+
 
 }
 
@@ -64,7 +148,7 @@ form{
     left:-1rem;
 }
 ::-webkit-scrollbar-track-piece {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 1rem;
