@@ -10,53 +10,8 @@
 
 }
 
-form{
-    height:80vh;
-    overflow-y: scroll;
-}
 
 /* 드롭다운 구현 */
-.dropdown,.dropdown2{
-    display: inline-block;
-    width: 10rem;
-    padding:1rem;
-    box-sizing:border-box;
-
-    border-radius: 1rem;
-    border:solid 1px #8c8c8c;
-    background-color: white;
-
-    position: relative;
-    cursor:pointer;
-
-}
-
-.dropdown_display,.dropdown2_display{
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-}
-
-.dropdown_itembox,.dropdown2_itembox{
-    background-color: white;
-    border:solid 1px #8c8c8c;
-    border-radius: 1rem;
-    position: absolute;
-    
-    margin-top:1rem;
-    margin-left:-1rem;
-
-    box-sizing:border-box;
-    width:100%;
-
-    overflow: hidden;
-    display: none;
-    z-index:5;
-}
-.dropdown2_height{
-    height:10rem;
-    overflow-y: scroll;
-}
 
 ::-webkit-scrollbar {
   width: 0.5rem; /* 세로축 스크롤바 길이 */
@@ -65,74 +20,15 @@ form{
 }
 ::-webkit-scrollbar-track-piece {
   background-color: #ffffff;
+      border-radius: 0.4rem;
+
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 1rem;
-  background-color: #ccc;
-}
-
-
-
-.dropdown_item,.dropdown2_item{
-    padding:1rem;
-}
-
-.dropdown_item:hover,.dropdown2_item:hover{
-    background-color: #e7e7e7;
-}
-
-.show{
-    display: inline-block;
+  background-color: #aaa;
+      border-radius: 0.4rem;
 
 }
 
-/* namefiled none */
-#id_period{
-    display: none;
-}
-
-#fake_is_list{
-    border:2px solid #ccc;
-    border-radius: 5px;
-    width:4rem;
-    height:1.5rem;
-    display: inline-block;
-    position: relative;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-    cursor: pointer;
-}
-#toggle_btn{
-    width:2rem;
-    height:2rem;
-    background:#aaa;
-    color:white;
-    border-radius: 50%;
-    margin:0px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    left: -0.5rem;
-    top:-0.4rem;
-
-    
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-#id_is_list:checked + #fake_is_list{
-    background-color: #aaa;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-}
-
-#id_is_list:checked + #fake_is_list > #toggle_btn{
-    /* border:2px solid green; */
-    background-color:#777;
-
-    left: 2.1rem;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-}
 
 

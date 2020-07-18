@@ -49,12 +49,12 @@ Array.from(dropdown2_item).forEach(item => {
 is_list.addEventListener('change', function (){
     
     if (this.checked) {
-        toggle_btn.innerHTML = "多"
+        toggle_btn.innerHTML = "🐣"
         make_task_list(hidden_period_value.value)
         is_list.value= "True"
 
     } else {
-        toggle_btn.innerHTML = "少"
+        toggle_btn.innerHTML = "🥚"
         task_list_area.innerHTML = ""
         is_list.value = "False"
     }
@@ -64,7 +64,7 @@ const make_task_list = function(num){
     let temp_html=""
     for (let i = 0; i < num; i++) {
         console.log(i, "<============")
-        temp_html += "<label>" + (i + 1) + "일 째" + "</label>" + "<input type='text' name='tasklist" + i + "'/><br>"
+        temp_html += " <div class='tc_task_list_row'><label>" + (i + 1) + "일 째" + "</label>" + "<input type='text' name='tasklist" + i + "'/></div>"
     }
 
     task_list_area.innerHTML = temp_html

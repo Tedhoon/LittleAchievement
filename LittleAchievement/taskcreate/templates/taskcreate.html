@@ -2,52 +2,71 @@
 {%load static%}
 {% block extrahead %}
 <link rel="stylesheet" href="{% static 'css/task.css' %}">
+<link rel="stylesheet" href="{% static 'css/taskcreate.css' %}">
 
 {% endblock %}
 
 {%block content%}
 
-    <h1> Task Creates</h1>
-    <form method="POST"> 
+    
+    <form method="POST">
+        <h1 class="tc_title"> Task Creates</h1>
         {%csrf_token%}
         {% for field in form %}
             {%if not field.label == "Maker" and not field.label == "태그" and not field.label == "기간" and not field.label == "리스트여부" %}
-            <h6>{{field.label}} : {{field}}</h6>
-                   
+            <div class="tc_input_wapper">
+            {%if field.label == "할 일" %}
+            <label for ="id_name">할 일</label>
+            {%elif field.label == "설명" %}
+                <label for="id_desc">설 명</label>
+            {% endif %}    
+             {{field}}</div>
+            
             {%endif%}
         {%endfor%}
         <input type="hidden" name="maker" value="{{request.user.id}}" />
-
-        <div class="dropdown">
-            <input id="id_tags" type="hidden" name="tags" value="일상" />
-            <div class="dropdown_display"> 분야 <span>▼</span></div>
-            <div class="dropdown_itembox">
-                {%for category in task_category %}
-                    <div class="dropdown_item">{{category}}</div>
-                {%endfor%}
+        
+        <div class="tc_dropdown_wapper">
+            <div class="drop_label"> 분야 </div>
+            <div class="dropdown">
+                <input id="id_tags" type="hidden" name="tags" value="일상" />
+                <div class="dropdown_display"> -- <span>▼</span></div>
+                <div class="dropdown_itembox">
+                    {%for category in task_category %}
+                        <div class="dropdown_item">{{category}}</div>
+                    {%endfor%}
+                </div>
             </div>
-        </div>
 
-        <div class="dropdown2">
-            <input id ="id_period" type="number" name="period" value= 0 />
+            <div class="drop_label"> 기간 </div>
+
+            <div class="dropdown2">
+                <input id ="id_period" type="number" name="period" value= 0 />
+                
+                <div class="dropdown2_display"> -- <span>▼</span></div>
+                <div class="dropdown2_itembox dropdown2_height">
+                    {% for day in period %}
+                    <div class="dropdown2_item">{{day}}일 동안</div>
+                    {%endfor%}
             
-            <div class="dropdown2_display"> 기간 <span>▼</span></div>
-            <div class="dropdown2_itembox dropdown2_height">
-                {% for day in period %}
-                <div class="dropdown2_item">{{day}}일 동안</div>
-                {%endfor%}
-        
+                </div>
             </div>
         </div>
+        <div class="tc_toggle_wrapper">
 
-        <input id="id_is_list" type="checkbox" name="is_list">
-        <label id="fake_is_list" for = "id_is_list">
-            <div id="toggle_btn">少</div>
-        </label>
-        <div id="task_list_area">TASK LIST AREA</div>
+            <label class="toggle_label" for="id_is_list">단일/리스트</label>
+            <input id="id_is_list" type="checkbox" name="is_list">
+            <label id="fake_is_list" for = "id_is_list">
+                <div id="toggle_btn">🥚</div>
+            </label>
+        </div>
+
+        <div id="task_list_area"></div>
         
+        <div class="tc_btn_wapper">
 
-        <h5><button type="submit"> 제출 </button></h5>
+            <button class="tc_create_btn" type="submit"> 작성 ✒ </button>
+        </div>
     </form>
 
     <script type="text/javascript" src="{% static 'js/task.js'%}"></script>
