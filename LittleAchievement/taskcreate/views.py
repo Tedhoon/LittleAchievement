@@ -81,10 +81,12 @@ class TaskUpdate(UpdateView):
         
         super().post(request, *args, **kwargs)
         latest_task = CommonTask.objects.filter(maker=request.user).order_by("created").last()
+        print(latest_task)
+        print(request.POST)
         print(request.POST.get('is_list'),"=======집중해라집중===========")
         if request.POST.get('is_list') == "True":
             print(request.POST.get("period"),"반복횟수~~~~~~~~~~~~~~~~~~~@@@@@@")
-            
+            DetailTaskList.objects.filter(root = latest_task).delete()
             for i in range(int(request.POST.get("period"))):
                 print(request.POST.get("tasklist"+str(i)))
                 tmp_task = DetailTaskListForm({'root':latest_task, 'desc': request.POST.get("tasklist"+str(i))})

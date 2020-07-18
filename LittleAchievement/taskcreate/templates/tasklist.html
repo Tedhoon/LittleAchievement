@@ -13,7 +13,7 @@
 </div>
 
 
-<form method="post" action="{% url 'subscribe'%}">
+<form method="post" action="{% url 'subscribe'%}" >
     {%csrf_token%}
 
 
@@ -40,6 +40,9 @@
             <li>
                 {{one_task.name}}(출제자 : {{one_task.maker}})
                 {%if not one_task in mytask_list%}
+                {%if one_task.maker == request.user %}
+                    <a href="{% url 'taskupdate' one_task.id %}">수정하자</a>
+                {%endif%}
                 <button type="submit" name="subscribe_task" value="{{one_task.id}}">
                     구독
                 </button>

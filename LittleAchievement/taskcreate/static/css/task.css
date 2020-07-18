@@ -10,6 +10,10 @@
 
 }
 
+form{
+    height:80vh;
+    overflow-y: scroll;
+}
 
 /* 드롭다운 구현 */
 .dropdown,.dropdown2{
