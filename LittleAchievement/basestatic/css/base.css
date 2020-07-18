@@ -14,14 +14,12 @@ body{
 @font-face{
     font-family: 'NEXON_Lv1_Gothic';
     src: url("../images/NEXON_Lv1_Gothic.otf");
-    /* src: url("./images/NEXON Lv1 Gothic.woff"); */
-    /* src: url("./images/NEXON Lv1 Gothic.#iefix") format('embedded-opentype'); */
-    
+
 } 
 
 * { 
     box-sizing: border-box;
-    font-family: 'NEXON_Lv1_Gothic' !important;
+    font-family: 'NEXON_Lv1_Gothic';
 }
 
 a { text-decoration: none; color: white; }
@@ -30,27 +28,40 @@ a:visited { text-decoration: none; }
 .container{
 border:2px solid #0D4294;
 position: relative;
-padding:1.5rem;
+/* padding:1rem; */
 flex:1;
 width:100vw;
-background: #0D4294;
-
+min-height: 100vh;
+/* background: #0D4294; */
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
 }
+
 .bottom_nav{
-    border:2px solid black;
+    /* border:2px solid #FF777A; */
+    /* background-color: #0b2f66; */
+    border-radius: 10px;
     display: flex;
     position: fixed;
-    bottom:0;
+    bottom: 1.8rem;
     width:100vw;
 }
 .bottom_nav > a {
     flex:1px;
-    border:2px solid red;
+    /* border:2px solid red; */
+    border-radius: 10px;
     text-align: center;
     padding:1rem;
     cursor: pointer;
+    /* border-right: 2px solid #0D4294; */
+}
+
+.back_img{
+    /* width: 100vw; */
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+    /* top:0; */
 }

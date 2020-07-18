@@ -6,13 +6,14 @@
 {% endblock %}
 
 {% block content %}
-<form method="POST" action="{% url 'signup' %}">
-    {% csrf_token %}
-    <div>{% for i in RegisterForm %}
-        {{i}}
-        {{i.errors}}
-        {% endfor %}
-    </div>
-    <input type="submit" value="다음">
-</form>
+<div class='login_letter'>
+    <p> 회원가입</p>
+</div>
+<div class="register_form">
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        {{ RegisterForm.as_p }}
+        <input type="submit" value="다음" class="input_class_login">
+    </form>
+</div>
 {% endblock %}
