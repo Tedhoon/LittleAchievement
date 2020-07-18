@@ -2,15 +2,17 @@ from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView,UpdateView
 from django.views.generic.list import ListView
 
-from task.models import CommonTask,MyTask
+from task.models import CommonTask,MyTask,DetailTaskList
 from django.urls import reverse_lazy
 
 from django.core.exceptions import PermissionDenied
 
+from task.forms import DetailTaskListForm
+
 # Create your views here.
 class TaskCreate(CreateView):
     model = CommonTask
-    fields = ['name','maker','desc','tags','period']
+    fields = ['name','maker','desc','tags','period',"is_list"]
     template_name = 'taskcreate.html'
     success_url = reverse_lazy('tasklist')
 
@@ -22,6 +24,28 @@ class TaskCreate(CreateView):
         context['period'] = range(1,31)
         return context
 
+    def post(self, request, *args, **kwargs):
+        
+        super().post(request, *args, **kwargs)
+        latest_task = CommonTask.objects.filter(maker=request.user).order_by("created").last()
+        print(request.POST.get('is_list'),"=======집중해라집중===========")
+        if request.POST.get('is_list') == "True":
+            print(request.POST.get("period"),"반복횟수~~~~~~~~~~~~~~~~~~~@@@@@@")
+            
+            for i in range(int(request.POST.get("period"))):
+                print(request.POST.get("tasklist"+str(i)))
+                tmp_task = DetailTaskListForm({'root':latest_task, 'desc': request.POST.get("tasklist"+str(i))})
+                if tmp_task.is_valid():
+                    print("잘 살아 남았다")
+                    tmp_task.save()
+
+
+
+        return redirect('tasklist')
+
+        
+            
+        
 
 class TaskList(ListView):
     model = CommonTask
@@ -41,7 +65,7 @@ class TaskList(ListView):
 
 class TaskUpdate(UpdateView):
     model = CommonTask
-    fields = ['name','maker','desc','tags','period']
+    fields = ['name','maker','desc','tags','period',"is_list"]
     template_name = 'taskupdate.html'
     success_url = reverse_lazy('tasklist')
 
@@ -53,11 +77,36 @@ class TaskUpdate(UpdateView):
         else:
             raise PermissionDenied
 
+    def post(self, request, *args, **kwargs):
+        
+        super().post(request, *args, **kwargs)
+        latest_task = CommonTask.objects.filter(maker=request.user).order_by("created").last()
+        print(request.POST.get('is_list'),"=======집중해라집중===========")
+        if request.POST.get('is_list') == "True":
+            print(request.POST.get("period"),"반복횟수~~~~~~~~~~~~~~~~~~~@@@@@@")
+            
+            for i in range(int(request.POST.get("period"))):
+                print(request.POST.get("tasklist"+str(i)))
+                tmp_task = DetailTaskListForm({'root':latest_task, 'desc': request.POST.get("tasklist"+str(i))})
+                if tmp_task.is_valid():
+                    print("잘 살아 남았다")
+                    tmp_task.save()
+
+
+
+        return redirect('tasklist')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['task'] = self.get_object()
+        
+        context['task_category'] = ['일상', '스포츠', '교육', '감사']
+        context['period'] = range(1,31)
+
         return context
-    
+
+
+
 
 def taskdelete(request,pk):
     del_task = CommonTask.objects.get(id = pk)

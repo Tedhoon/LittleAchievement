@@ -11,7 +11,7 @@
     <form method="POST"> 
         {%csrf_token%}
         {% for field in form %}
-            {%if not field.label == "Maker" and not field.label == "태그" and not field.label == "기간"  %}
+            {%if not field.label == "Maker" and not field.label == "태그" and not field.label == "기간" and not field.label == "리스트여부" %}
             <h6>{{field.label}} : {{field}}</h6>
                    
             {%endif%}
