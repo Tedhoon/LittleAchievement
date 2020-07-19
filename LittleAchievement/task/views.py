@@ -41,6 +41,7 @@ def task_managing(request):
             target_task.delete()
             print("할일이 삭제되었습니다.")
             
+            return redirect('index')
     if request.POST.get('checking_task'):
         checking_task = MyTask.objects.get(id=request.POST.get('checking_task'))
         

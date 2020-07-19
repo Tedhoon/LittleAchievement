@@ -38,3 +38,17 @@ def signup(request):
 class LoginView(LoginView):
     template_name = 'registration/login.html'
     authentication_form = LoginForm
+
+
+def mypage(request):
+    context = dict()
+    active_user = request.user
+    # context['all_common_task'] = CommonTask.objects.all()
+
+    if str(active_user) != "AnonymousUser":
+        context['all_my_task'] = MyTask.objects.filter(user = active_user)
+        
+        return render(request, 'mypage.html',context)
+
+    else:
+        return redirect('login')
