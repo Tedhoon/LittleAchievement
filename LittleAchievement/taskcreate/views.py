@@ -9,6 +9,7 @@ from django.core.exceptions import PermissionDenied
 
 from task.forms import DetailTaskListForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import CommonTaskForm
 
 # Create your views here.
 class TaskCreate(CreateView):
@@ -26,8 +27,9 @@ class TaskCreate(CreateView):
         return context
 
     def post(self, request, *args, **kwargs):
-        
-        super().post(request, *args, **kwargs)
+    
+
+        super().post(self,request, *args, **kwargs)
         latest_task = CommonTask.objects.filter(maker=request.user).order_by("created").last()
         print(request.POST.get('is_list'),"=======집중해라집중===========")
         if request.POST.get('is_list') == "True":
@@ -40,12 +42,9 @@ class TaskCreate(CreateView):
                     print("잘 살아 남았다")
                     tmp_task.save()
 
-
-
         return redirect('tasklist')
 
         
-            
         
 
 class TaskList(LoginRequiredMixin,ListView):
