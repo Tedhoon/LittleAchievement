@@ -5,6 +5,24 @@ form{
     margin-top:5rem;
 }
 
+::-webkit-scrollbar {
+  width: 0.5rem; /* 세로축 스크롤바 길이 */
+  /* height: 1rem; 가로축 스크롤바 길이 */
+    left:-1rem;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: #ffffff57;
+      border-radius: 0.4rem;
+
+  /* background-color: #ffffff; */
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: rgba(6, 88, 211, 0.911);
+      border-radius: 0.4rem;
+
+}
+
 .dropdown,.dropdown2{
     display: inline-block;
     flex:1;
@@ -239,4 +257,11 @@ input[type="checkbox"]{
 .show{
     display: inline-block;
 
+}
+@media(max-width:400px){
+  
+    form{
+        width:100vw;
+    }
+ 
 }

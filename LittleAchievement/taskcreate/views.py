@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
 
 from task.forms import DetailTaskListForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 class TaskCreate(CreateView):
@@ -47,15 +48,22 @@ class TaskCreate(CreateView):
             
         
 
-class TaskList(ListView):
+class TaskList(LoginRequiredMixin,ListView):
     model = CommonTask
     # paginate_by = 50
     template_name = 'tasklist.html'
 
+
+    def get(self, request, *args, **kwargs):
+       
+        return super().get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
+       
+        
         context = super().get_context_data(**kwargs)
         context['task_list'] = CommonTask.objects.all()
-        mytask_qs_list  = MyTask.objects.filter(user = self.request.user)
+        mytask_qs_list  = MyTask.objects.filter(user =self.request.user)
         mytask_list = [i.task for i in mytask_qs_list]
         context['mytask_list'] = mytask_list
         if len(mytask_list) == 5:
@@ -63,6 +71,8 @@ class TaskList(ListView):
 
         return context
 
+    
+    
 # class TaskUpdate(UpdateView):
 #     model = CommonTask
 #     fields = ['name','maker','desc','tags','period',"is_list"]

@@ -1,67 +1,85 @@
 {%extends 'base.html'%}
 {%load static%}
 {% block extrahead %}
+
 <link rel="stylesheet" href="{% static 'css/task.css' %}">
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 {% endblock %}
 
 {%block content%}
 
 
+<h1>소소한 일상을 구독해요</h1>
+<div class="form_wrap">
 
-<form method="post" action="{% url 'subscribe'%}">
-    {%csrf_token%}
-
-
-    {% if full_task %}
-
-    <h1> 선택하지 못합니다.</h1>
-    {%for one_task in task_list %}
-
-    <li>
-        <div class="each_list">
-
-            {{one_task.name}}(출제자 : {{one_task.maker}})
-            {%if not one_task in mytask_list%}
-
-            <button type="submit" name="subscribe_task" value="{{one_task.id}}">
-                구독
-            </button>
-        </div>
-        {%endif%}
-        </div>
-    </li>
-    {%endfor%}
-
-    {%else%}
-
-    <h1>소소한 일상을 구독해요</h1>
-    {%for one_task in task_list %}
-
-    <li>
-        <div class="each_list">
-            <div class="each_list_left">
-                {{one_task.name}}(출제자 : {{one_task.maker}})
+    <form method="post" action="{% url 'subscribe'%}">
+        {%csrf_token%}
+        
+        
+        {% if full_task %}
+        
+            <h1> 선택하지 못합니다.</h1>
+            {%for one_task in task_list %}
+            
+            <div class="each_list">
+                <div class="each_list_left">
+                    {{one_task.name}}
+                    <!--(출제자 : {{one_task.maker}})-->
+            
+                </div>
                 {%if not one_task in mytask_list%}
+                <div class="each_list_right">
+                    <button class='button' type="submit" name="subscribe_task" value="{{one_task.id}}">
+                        구독
+                    </button>
+                </div>
+                {%else%}
+                <div class="each_list_right list_right_disabled">
+            
+                    <button class=' button btn_disabled' disabled name="subscribe_task" value="{{one_task.id}}">
+            
+                        구독중
+                    </button>
+            
+                </div>
+                {%endif%}
             </div>
-            <div class="each_list_right">
-                <button class='button' type="submit" name="subscribe_task" value="{{one_task.id}}">
-                    구독
-                </button>
-            </div>
-            {%endif%}
-        </div>
-    </li>
-    {%endfor%}
+            {%endfor%}
 
-    {%endif%}
-    <a href="{% url 'taskcreate'%}">
-        <div class="task_create_btn">
+        {%else%}
+    
+            {%for one_task in task_list %}
+            
+                <div class="each_list">
+                    <div class="each_list_left">
+                        {{one_task.name}}<!--(출제자 : {{one_task.maker}})-->
+                        
+                    </div>
+                    {%if not one_task in mytask_list%}
+                        <div class="each_list_right">
+                            <button class='button' type="submit" name="subscribe_task" value="{{one_task.id}}">
+                                구독
+                            </button>
+                        </div>
+                    {%else%}
+                        <div class="each_list_right list_right_disabled">
+
+                            <button class=' button btn_disabled' disabled name="subscribe_task" value="{{one_task.id}}">
+
+                                구독중
+                            </button>
+
+                        </div>
+                    {%endif%}
+                </div>
+            {%endfor%}
+    
+        {%endif%}
+
+    <a class="task_create_btn" href="{% url 'taskcreate'%}">
             Task 작성하기
-        </div>
     </a>
 </form>
-
+</div>
 
 {%endblock%}
