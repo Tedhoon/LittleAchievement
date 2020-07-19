@@ -8,37 +8,30 @@
 {% endblock %}
 
 {%block content%}
-<div id='mypage_container'>
-<p class="page_title">마이페이지</p>
-<p class="mypage_user"><span>{{request.user}}님</span>구독 리스트</p>
+        <img src="{% static 'images/mypage.png' %}" alt="" class='back_img'>
+
+
+<h1 class="mypage_title">마이페이지</h1>
+<h4 class="mypage_username"><span>{{request.user}}님</span> 구독 리스트</h4>
+<div class="mypage_circle"> </div>
+
 <div class="mytask_list">
     <form action="{% url 'task_managing' %}" method="post">
         {%csrf_token%}
         {%for one_task in all_my_task %}
         <div class="mytask_compo_wrap">
-            <div class="mytask_compo">{{one_task}}</div> 
-            {%if one_task.is_checked|stringformat:"i" == "1" %}
-                <button  class="diable_btn" disabled name="unsubscribe_task" value="{{one_task.id}}">내일 날려요</button>
-            {%else%}
-                <button type="submit" name="unsubscribe_task" value="{{one_task.id}}">날리기🎈</button>
+            <div class="mytask_compo">{{one_task}}</div>
+            {% if not one_task.task.maker.is_superuser %}
 
+                {%if one_task.is_checked|stringformat:"i" == "1" %}
+                <button class="diable_btn" disabled name="unsubscribe_task" value="{{one_task.id}}">오늘했어요</button>
+                {%else%}
+                <button type="submit" name="unsubscribe_task" value="{{one_task.id}}">삭제</button>
+
+                {%endif%}
             {%endif%}
         </div>
         {%endfor%}
     </form>
 </div>
-<footer class="footer">
-    <nav>
-        <a href="{% url 'index' %}">
-            <div class="bottom_nav_item"><i class="fas fa-home fa-2x"></i></div>
-        </a>
-        <a href="{% url 'tasklist' %}">
-            <div class="bottom_nav_item"> <i class="fas fa-list fa-2x"></i></div>
-        </a>
-        <a href="{% url 'mypage' %}">
-            <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
-        </a>
-    </nav>
-</footer>
-</div>
-{%endblock%}    
+{%endblock%}

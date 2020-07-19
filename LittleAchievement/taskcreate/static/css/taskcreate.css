@@ -1,18 +1,39 @@
 .container{
     justify-content: unset;
 }
+form{
+    margin-top:2rem;
+}
 
+::-webkit-scrollbar {
+  width: 0.5rem; /* 세로축 스크롤바 길이 */
+  /* height: 1rem; 가로축 스크롤바 길이 */
+    left:-1rem;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: #ffffff57;
+      border-radius: 0.4rem;
+
+  /* background-color: #ffffff; */
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: rgba(6, 88, 211, 0.911);
+      border-radius: 0.4rem;
+
+}
 
 .dropdown,.dropdown2{
     display: inline-block;
-    width: 60vw;
-    height: 7vh;
+    flex:1;
+    padding:1rem;
     box-sizing:border-box;
 
     border-radius: 0.4rem;
     border:solid 1px #8c8c8c;
     background-color: white;
 
+    position: relative;
     cursor:pointer;
 
 }
@@ -31,11 +52,13 @@
     border-radius: 0.4rem;
     position: absolute;
     
-    
+    margin-top:1.2rem;
+    margin-left:-1rem;
 
     box-sizing:border-box;
     width:100%;
 
+    overflow: hidden;
     display: none;
     z-index:5;
 }
@@ -46,7 +69,6 @@
 
 
 .dropdown_item,.dropdown2_item{
-    width: 10vw;
     padding:1rem;
     text-align: center;
     font-weight: bold;
@@ -99,9 +121,6 @@
 
 }
 
-#id_is_list{
-    display: none;
-}
 #id_is_list:checked + #fake_is_list > #toggle_btn{
     /* border:2px solid green; */
     background-color:#408cf0c7;
@@ -120,24 +139,19 @@
 }
 .tc_input_wapper{
 
-    margin: 5vw;
+    padding:0 3rem;
+    margin:4rem 0 ;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .tc_input_wapper label
-{  
-    margin: 2vw;
-    font-size: 5vw;
-    line-height: 133.5%;
-    /* identical to box height, or 32px */
-    
-    letter-spacing: 0.14em;
-    
-    color: #FFFFFF;
-    
-    text-shadow: -5px 5px 4px rgba(0, 0, 0, 0.60);
+{    width:6rem;
+    display: inline-block;
+    color:#ffffffc2;
+    font-size:1.5rem;
+    font-weight: bold;
 }
 
 .tc_dropdown_wapper .dropdown{
@@ -159,26 +173,18 @@
 }
 
 .tc_dropdown_wapper{
-    
-    margin: 3vw;
+    padding:0 3rem;
+    margin:4rem 0 ;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .drop_label{
-    display: inline-block;
-    margin: 2vw;
-    font-size: 5vw;
-    line-height: 133.5%;
-    /* identical to box height, or 32px */
-    
-    letter-spacing: 0.14em;
-    
-    color: #FFFFFF;
-    
-    text-shadow: -5px 5px 4px rgba(0, 0, 0, 0.60);
-}
+    font-size:1.5rem;
+        color:#ffffffc2;
+    font-weight: bold;
+    width:6rem;
 }
 
 input[type="checkbox"]{
@@ -186,24 +192,16 @@ input[type="checkbox"]{
 }
 
 .toggle_label{
-    margin: 2vw;
-    font-size: 5vw;
-    line-height: 133.5%;
-    /* identical to box height, or 32px */
-    
-    letter-spacing: 0.14em;
-    
-    color: #FFFFFF;
-    text-align: center;
-    text-shadow: -5px 5px 4px rgba(0, 0, 0, 0.60);
-    
+     font-size:1.5rem;
+        color:#ffffffc2;
+    font-weight: bold;
+    margin-right:3rem;
 }
 .tc_toggle_wrapper{
-    margin: 5vw;
+    padding:0 3rem;
+    margin:4rem 0 ;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
 }
 #task_list_area{
     max-height:12rem;
@@ -259,4 +257,15 @@ input[type="checkbox"]{
 .show{
     display: inline-block;
 
+}
+
+form{
+width:56.5vh;
+}
+@media(max-width:500px){
+  
+    form{
+        width:100vw;
+    }
+ 
 }

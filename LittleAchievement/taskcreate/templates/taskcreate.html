@@ -1,76 +1,74 @@
 {%extends 'base.html'%}
 {%load static%}
 {% block extrahead %}
-<link rel="stylesheet" href="{% static 'css/task.css' %}">
 <link rel="stylesheet" href="{% static 'css/taskcreate.css' %}">
 
 {% endblock %}
 
 {%block content%}
+<img src="{% static 'images/subscribe.png' %}" alt="" class='back_img'>
 
 
-<div id='subscribe_container'>
-    <form method="POST">
-        <p class="page_title"> Task 만들기 </p>
-        {%csrf_token%}
-        {% for field in form %}
-            {%if not field.label == "Maker" and not field.label == "태그" and not field.label == "기간" and not field.label == "리스트여부" %}
-            <div class="tc_input_wapper">
-            {%if field.label == "할 일" %}
-            <label for ="id_name">할 일</label>
-            {%elif field.label == "설명" %}
-                <label for="id_desc">설 명</label>
-            {% endif %}    
-             {{field}}</div>
-            
-            {%endif%}
-        {%endfor%}
-        <input type="hidden" name="maker" value="{{request.user.id}}" />
-        
-        <div class="tc_dropdown_wapper">
-            <div class="drop_label"> 분야 </div>
-            <div class="dropdown">
-                <input id="id_tags" type="hidden" name="tags" value="일상" />
-                <div class="dropdown_display"> -- <span>▼</span></div>
-                <div class="dropdown_itembox">
-                    {%for category in task_category %}
-                        <div class="dropdown_item">{{category}}</div>
-                    {%endfor%}
-                </div>
-            </div>
-        
-            <div class="drop_label"> 기간 </div>
+<form method="POST">
+    <h1 class="tc_title"> Task 만들기</h1>
+    {%csrf_token%}
+    {% for field in form %}
+    {%if not field.label == "Maker" and not field.label == "태그" and not field.label == "기간" and not field.label == "리스트여부" %}
+    <div class="tc_input_wapper">
+        {%if field.label == "할 일" %}
+        <label for="id_name">할 일</label>
+        {%elif field.label == "설명" %}
+        <label for="id_desc">설 명</label>
+        {% endif %}
+        {{field}}</div>
 
-            <div class="dropdown2">
-                <input id ="id_period" type="number" name="period" value= 0 />
-                
-                <div class="dropdown2_display"> -- <span>▼</span></div>
-                <div class="dropdown2_itembox dropdown2_height">
-                    {% for day in period %}
-                    <div class="dropdown2_item">{{day}}일 동안</div>
-                    {%endfor%}
-            
-                </div>
+    {%endif%}
+    {%endfor%}
+    <input type="hidden" name="maker" value="{{request.user.id}}" />
+
+    <div class="tc_dropdown_wapper">
+        <div class="drop_label"> 분야 </div>
+        <div class="dropdown">
+            <input id="id_tags" type="hidden" name="tags" value="일상" />
+            <div class="dropdown_display"> -- <span>▼</span></div>
+            <div class="dropdown_itembox">
+                {%for category in task_category %}
+                <div class="dropdown_item">{{category}}</div>
+                {%endfor%}
             </div>
         </div>
-       
-        <div class="tc_toggle_wrapper">
 
-            <label class="toggle_label" for="id_is_list">단일/리스트</label>
-            <input id="id_is_list" type="checkbox" name="is_list" value="False">
-            <label id="fake_is_list" for = "id_is_list">
-                <div id="toggle_btn">🥚</div>
-            </label>
+        <div class="drop_label"> 기간 </div>
+
+        <div class="dropdown2">
+            <input id="id_period" type="number" name="period" value=0 />
+
+            <div class="dropdown2_display"> -- <span>▼</span></div>
+            <div class="dropdown2_itembox dropdown2_height">
+                {% for day in period %}
+                <div class="dropdown2_item">{{day}}일 동안</div>
+                {%endfor%}
+
+            </div>
         </div>
+    </div>
+    <div class="tc_toggle_wrapper">
 
-        <div id="task_list_area"></div>
-        
-        <div class="tc_btn_wapper">
+        <label class="toggle_label" for="id_is_list">단일/리스트</label>
+        <input id="id_is_list" type="checkbox" name="is_list" value="False">
+        <label id="fake_is_list" for="id_is_list">
+            <div id="toggle_btn">🥚</div>
+        </label>
+    </div>
 
-            <button class="tc_create_btn" type="submit"> 작성 ✒ </button>
-        </div>
-    </form>
+    <div id="task_list_area"></div>
 
-    <script type="text/javascript" src="{% static 'js/task.js'%}"></script>
-</div> </div>
+    <div class="tc_btn_wapper">
+
+        <button class="tc_create_btn" type="submit"> 작성 🖍 </button>
+    </div>
+</form>
+
+<script type="text/javascript" src="{% static 'js/task.js'%}"></script>
+
 {%endblock%}

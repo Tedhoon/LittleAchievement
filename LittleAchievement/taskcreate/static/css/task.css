@@ -3,94 +3,117 @@ li{
     color: white;
 
 }
+body{
+    background: #09234F;
+}
+
+
+* { 
+    box-sizing: border-box;
+}
+
+
+h1 {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+h4{
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+/* a{
+    position: absolute;
+    bottom: 0px;
+} */
+
 
 .each_list{
-    margin-bottom: 4vw;
-    display: inline-block;
-    background: linear-gradient(245.81deg, #FB5F63 0.66%, rgba(255, 140, 142, 0.848958) 72.13%, rgba(255, 157, 159, 0.723958) 90%, rgba(255, 169, 171, 0.634775) 100.21%, rgba(255, 183, 185, 0.528979) 107.23%, rgba(255, 255, 255, 0) 123.18%, rgba(255, 255, 255, 0) 123.18%);
+    width:100%;
+    color:white;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+     background: linear-gradient(245.81deg, #FB5F63 0.66%, rgba(255, 140, 142, 0.848958) 72.13%, rgba(255, 157, 159, 0.723958) 90%, rgba(255, 169, 171, 0.634775) 100.21%, rgba(255, 183, 185, 0.528979) 107.23%, rgba(255, 255, 255, 0) 123.18%, rgba(255, 255, 255, 0) 123.18%);
     box-shadow: -15px 15px 4px rgba(0, 0, 0, 0.40);
     border-radius: 20px;
-    border: 0em;
-    width: 80vw;
-    height: 15vh;
+    overflow:hidden
 }
 
 .each_list_left{
-    display: inline-flex;
-    width: 40vw;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 7vw;
-    line-height: 133.5%;
-    /* or 33px */
-
-    letter-spacing: 0.14em;
-
-    color: #FFFFFF;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 8px;
+    width: 80%;
+    font-size: 1.2rem;
+    font-weight: bold;
     text-align: left;
-    margin: 4vw;
-    margin-left: 6vw;
+    padding:0 1.5rem;
 }
-.each_list_writer{
-    display: inline-flex;
-    width: 40vw;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 4vw;
-    line-height: 133.5%;
-    /* identical to box height, or 24px */
-
-    letter-spacing: 0.14em;
-
-    color: #FFFFFF;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin: 4vw;
-    margin-top: 2vw;
-}
-
 .each_list_right{
+    width: 20%;
     display: flex;
-    width: 20vw;
-    height: 15vh;
-   
+    padding:1rem 0.5rem;
+
+    justify-content: center;
+    align-items: center;
+
 }
-.button{    
-    width: 20vw;
-    height: 15vh;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 4vw;
-    line-height: 133.5%;
-    /* identical to box height, or 24px */
-    color: indianred;
-    letter-spacing: 0.14em;
-    border:0em;
-    border-radius: 0px 13px 13px 0px;
-    height: 3.5rem;
-    background: rgba(255, 255, 255, 0.9);
+.button{
+    border: none;
+   background: rgba(255, 255, 255, 0.9);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+    color: #FB5F63;
     text-align: center;
-    margin-top: 5vw;
-    opacity: 90%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.4rem;
+    cursor: pointer;
+    outline: none;
+    padding:10px 20px;
+    margin-right:15px;
 }
 
 .button:active, .button:focus{
     outline: none;
 }
 .btn_disabled ,.list_right_disabled{
-    background-color: #79808b;
     font-size:1.4rem;
     cursor: default;
+}
+.btn_disabled {
+       background: #777;
+color:white;
+
 }
 .add_btn{
     background-color: white;
 }
 
 
+.task_create_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    border: 2px solid #4677c2;
+    opacity: 0.8;
+    background-color: #4677c2;
+    right:3rem;
+    bottom: -7rem;
+    padding:1rem 0.5rem;
+    border-radius: 13px;
+    font-size: 1.8rem;
+
+
+}
+.task_create_btn:hover{
+        opacity: 1;
+
+}
 
 /* 드롭다운 구현 */
 
@@ -118,7 +141,11 @@ width:59.5vh;
     position: relative;
 
 }
-
+form{
+    height:55vh;
+    overflow-y: scroll;
+    padding:0 3rem;
+}
 
 h1{
     margin-top:-12rem;

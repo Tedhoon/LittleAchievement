@@ -1,5 +1,32 @@
+.bg_img{
+    display:none;
+}
 
+.mypage_title{
+    color:white;
+    font-size:3.0rem;
+    letter-spacing: 3px;
+    margin-top:-10rem;
+    margin-bottom:2rem;
+}
 
+.mypage_circle{
+    background-color: thistle;
+    width:10rem;
+    height:10rem;
+    border-radius: 50%;
+}
+.mypage_username{
+    color:white;
+    font-size:2rem;
+    line-height: 1.5;
+}
+.mypage_username > span{
+    font-weight: 800;
+    font-size:2.5rem;
+    display: block;
+
+}
 .mytask_list{
     color:White;
     font-weight: bold;
