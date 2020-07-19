@@ -1,0 +1,69 @@
+
+.bg_img{
+    display:none;
+}
+
+.mypage_title{
+    color:white;
+    font-size:3.0rem;
+    letter-spacing: 3px;
+    margin-top:-5rem;
+    margin-bottom:5rem;
+}
+
+.mypage_circle{
+    background-color: thistle;
+    width:20rem;
+    height:20rem;
+    border-radius: 50%;
+}
+.mypage_username{
+    color:white;
+    font-size:2rem;
+    line-height: 1.5;
+}
+.mypage_username > span{
+    font-weight: 800;
+    font-size:2.5rem;
+    display: block;
+
+}
+.mytask_list{
+    color:White;
+    font-weight: bold;
+    margin-top:3rem;
+    margin-bottom:-3rem;
+      padding:0 3rem;
+
+    width:56.5vh;
+}
+.mytask_compo{
+    margin:1rem 0 ;
+    font-size:1.5rem;
+}
+.mytask_compo_wrap{
+    padding:1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.mytask_compo_wrap button{
+    border:none;
+    background:none;
+    background-color: #996af0b7;
+    color:white;
+    font-size:1.5rem;
+    font-weight: bold;
+    padding:0 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.mytask_compo_wrap .diable_btn{
+       background-color: #cfc6e0b7;
+    cursor: default;
+}
+
+@media(max-width:500px){
+    .mytask_list{
+        width: 100%;
+    }
+}

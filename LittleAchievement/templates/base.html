@@ -1,0 +1,41 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개발의 명수</title>
+    <script src="https://kit.fontawesome.com/703c3b8202.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static 'images/명수.png' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extrahead %}
+
+    {% endblock %}
+</head>
+
+<body>
+    <div class="container">
+        <img  src="{% static 'images/main.png' %}" alt="" class='back_img'>
+
+        {% block content %}
+        {% endblock %}
+
+
+
+        <div class="bottom_nav">
+            <a href="{% url 'index' %}">
+                <div class="bottom_nav_item"><i class="fas fa-home fa-2x"></i></div>
+            </a>
+            <a href="{% url 'tasklist' %}">
+                <div class="bottom_nav_item"> <i class="fas fa-list fa-2x"></i></div>
+            </a>
+            <a href="{% url 'mypage' %}">
+                <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method = "POST" action="{% url 'login' %}">
+{% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<div class='login_letter'>
+    <p> 로그인</p>
+</div>
+<div class="login_form">
+    <form method="POST" action="{% url 'login' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="로그인">
+        {{ form }}
+        <input type="submit" value="LOGIN" class='input_class_login'>
     </form>
-    <div> 머 아직까지 가입을 안햇닥오? 😊<a href="{% url 'signup' %}">회원가입</a></div>
-</body>
-</html>
+</div>
+<div class="login_form_below"> <a href="{% url 'signup' %}">회원가입 </a>/ <a href=""> 비밀번호 찾기 </a></div>
+{% endblock %}

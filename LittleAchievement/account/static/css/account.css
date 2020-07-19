@@ -1,0 +1,94 @@
+ .login_form{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+  .login_form > form{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+    width:59.5vh;
+    padding:0 3rem;
+ }
+.login_form > form > input{
+    width:100%;
+    margin:1rem 0;
+    padding:1.5rem;
+    font-size:1.2rem;
+}
+.register_form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register_form form{
+    display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+    width:59.5vh;
+    padding:0 3rem;
+}
+.register_form form input{
+     width:100%;
+    margin:1rem 0;
+    padding:1.5rem;
+    font-size:1.2rem;
+}
+.login_letter{
+    margin-top: -15rem;
+    font-size: 40px;
+    color: white;
+    text-shadow: -15px 15px 4px rgba(0, 0, 0, 0.25); 
+    height: 110px;
+
+}
+.input_class{
+ font-size: 1.2rem;
+ background: #D8E7FF;
+ box-shadow: -15px 15px 4px rgba(0, 0, 0, 0.25); 
+ border-radius: 10px;
+ border:none;
+ margin-bottom: 1rem;
+}
+input:focus{
+    border: none;
+}
+.register_form > form > .input_class_login,
+.login_form > form > .input_class_login{
+    margin-top: 3rem;
+
+}
+
+
+.input_class_login{
+    margin-top: 1rem;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: -15px 15px 4px rgba(0, 0, 0, 0.25); 
+    background: #FF777A;
+    border-radius: 10px;
+    border:none;
+    cursor: pointer;
+   }
+
+.login_form_below{
+    margin-top: 2rem;
+    /* background-color: white; */
+    font-size: 1.2rem;
+    color:white;
+}
+
+.bottom_nav{
+    /* display: none; */
+}
+
+
+.index{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -13rem;
+    font-size: 12px;
+}
