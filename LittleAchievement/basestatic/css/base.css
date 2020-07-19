@@ -74,8 +74,9 @@ body{
     position: absolute;
     z-index: -1;
     height: 100vh;
+
 }
-@media(max-width:400px){
+@media(max-width:500px){
     .back_img{
         object-position: center;
         object-fit: cover;

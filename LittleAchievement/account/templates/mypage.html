@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%load static%}
+{% block extrahead %}
+{% load customfilter %}
+
+<link rel="stylesheet" href="{% static 'css/mypage.css' %}">
+
+{% endblock %}
+
+{%block content%}
+
+<h1 class="mypage_title">마이페이지</h1>
+<div class="mypage_circle">  </div>
+<h4 class="mypage_username"><span>{{request.user}}님</span> 구독 리스트</h4>
+<div class="mytask_list">
+    <form action="{% url 'task_managing' %}" method="post">
+        {%csrf_token%}
+        {%for one_task in all_my_task %}
+        <div class="mytask_compo_wrap">
+            <div class="mytask_compo">{{one_task}}</div> 
+            {%if one_task.is_checked|stringformat:"i" == "1" %}
+                <button  class="diable_btn" disabled name="unsubscribe_task" value="{{one_task.id}}">내일 날려요</button>
+            {%else%}
+                <button type="submit" name="unsubscribe_task" value="{{one_task.id}}">날리기🎈</button>
+
+            {%endif%}
+        </div>
+        {%endfor%}
+    </form>
+</div>
+{%endblock%}    
