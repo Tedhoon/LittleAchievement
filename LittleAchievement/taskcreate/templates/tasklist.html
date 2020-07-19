@@ -9,77 +9,80 @@
 {%block content%}
 
 
-<h1>소소한 일상을 구독해요</h1>
-<div class="form_wrap">
-
-    <form method="post" action="{% url 'subscribe'%}">
-        {%csrf_token%}
-        
-        
-        {% if full_task %}
-        
-            <h1> 선택하지 못합니다.</h1>
-            {%for one_task in task_list %}
-            
-            <div class="each_list">
-                <div class="each_list_left">
-                    {{one_task.name}}
-                    <!--(출제자 : {{one_task.maker}})-->
-            
-                </div>
-                {%if not one_task in mytask_list%}
-                <div class="each_list_right">
-                    <button class='button' type="submit" name="subscribe_task" value="{{one_task.id}}">
-                        구독
-                    </button>
-                </div>
-                {%else%}
-                <div class="each_list_right list_right_disabled">
-            
-                    <button class=' button btn_disabled' disabled name="subscribe_task" value="{{one_task.id}}">
-            
-                        구독중
-                    </button>
-            
-                </div>
-                {%endif%}
-            </div>
-            {%endfor%}
-
-        {%else%}
+<div id='subscribe_container'>
     
-            {%for one_task in task_list %}
-            
-                <div class="each_list">
-                    <div class="each_list_left">
-                        {{one_task.name}}<!--(출제자 : {{one_task.maker}})-->
-                        
-                    </div>
-                    {%if not one_task in mytask_list%}
-                        <div class="each_list_right">
-                            <button class='button' type="submit" name="subscribe_task" value="{{one_task.id}}">
-                                구독
-                            </button>
-                        </div>
-                    {%else%}
-                        <div class="each_list_right list_right_disabled">
+<form method="post" action="{% url 'subscribe'%}">
+    {%csrf_token%}
 
-                            <button class=' button btn_disabled' disabled name="subscribe_task" value="{{one_task.id}}">
 
-                                구독중
-                            </button>
+    {% if full_task %}
 
-                        </div>
-                    {%endif%}
-                </div>
-            {%endfor%}
-    
+    <h1> 선택하지 못합니다.</h1>
+    {%for one_task in task_list %}
+ 
+    <li>
+        <div class="each_list">
+
+            {{one_task.name}}(출제자 : {{one_task.maker}})
+            {%if not one_task in mytask_list%}
+
+            <button type="submit" name="subscribe_task" value="{{one_task.id}}">
+                구독
+            </button>
+        </div>
         {%endif%}
+        </div>
+    </li>
+    {%endfor%}
 
-    <a class="task_create_btn" href="{% url 'taskcreate'%}">
-            Task 작성하기
-    </a>
-</form>
+    {%else%}
+
+    <p class="subscribepage_title">소소한 일상구독</p>
+    <p id ="subscribe_butitle">다양한 플랜을 구독해 하루에 생기를 더해보세요!</p>
+<div id="scroll-page">    
+{%for one_task in task_list %}
+    
+    <li>
+        <div class="each_list">
+            <div style="display: flex; 
+            vertical-align: middle;">
+                <div style="display: flex; flex-flow: column wrap;">
+                    <div class="each_list_left">
+                    {{one_task.name}}</div>
+                    <p class="each_list_writer">BY. {{one_task.maker}}</p>
+                    {%if not one_task in mytask_list%}
+                </div>
+                <div class="each_list_right" >
+                    <button class="button" type="submit" name="subscribe_task" value="{{one_task.id}}">구독</button>
+                </div>
+            </div>
+            
+            
+            {%endif%}
+        </div>
+    </li>
+    {%endfor%}
 </div>
-
+    
+</form>
+{%endif%}
+    <a href="{% url 'taskcreate'%}">
+        <div class="btn_darkblue">
+            +
+        </div>
+    </a>
+    <footer class="footer">
+        <nav>
+            <a href="{% url 'index' %}">
+                <div class="bottom_nav_item"><i class="fas fa-home fa-2x"></i></div>
+            </a>
+            <a href="{% url 'tasklist' %}">
+                <div class="bottom_nav_item"> <i class="fas fa-list fa-2x"></i></div>
+            </a>
+            <a href="{% url 'mypage' %}">
+                <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
+            </a>
+        </nav>
+    </footer>
+</div>
 {%endblock%}

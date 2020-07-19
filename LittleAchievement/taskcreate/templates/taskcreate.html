@@ -1,15 +1,17 @@
 {%extends 'base.html'%}
 {%load static%}
 {% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/task.css' %}">
 <link rel="stylesheet" href="{% static 'css/taskcreate.css' %}">
 
 {% endblock %}
 
 {%block content%}
 
-    
+
+<div id='subscribe_container'>
     <form method="POST">
-        <h1 class="tc_title"> Task Creates</h1>
+        <p class="page_title"> Task 만들기 </p>
         {%csrf_token%}
         {% for field in form %}
             {%if not field.label == "Maker" and not field.label == "태그" and not field.label == "기간" and not field.label == "리스트여부" %}
@@ -36,7 +38,7 @@
                     {%endfor%}
                 </div>
             </div>
-
+        
             <div class="drop_label"> 기간 </div>
 
             <div class="dropdown2">
@@ -51,6 +53,7 @@
                 </div>
             </div>
         </div>
+       
         <div class="tc_toggle_wrapper">
 
             <label class="toggle_label" for="id_is_list">단일/리스트</label>
@@ -64,10 +67,10 @@
         
         <div class="tc_btn_wapper">
 
-            <button class="tc_create_btn" type="submit"> 작성 🖍 </button>
+            <button class="tc_create_btn" type="submit"> 작성 ✒ </button>
         </div>
     </form>
 
     <script type="text/javascript" src="{% static 'js/task.js'%}"></script>
-
+</div> </div>
 {%endblock%}

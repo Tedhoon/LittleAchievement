@@ -8,10 +8,9 @@
 {% endblock %}
 
 {%block content%}
-
-<h1 class="mypage_title">마이페이지</h1>
-<div class="mypage_circle">  </div>
-<h4 class="mypage_username"><span>{{request.user}}님</span> 구독 리스트</h4>
+<div id='mypage_container'>
+<p class="page_title">마이페이지</p>
+<p class="mypage_user"><span>{{request.user}}님</span>구독 리스트</p>
 <div class="mytask_list">
     <form action="{% url 'task_managing' %}" method="post">
         {%csrf_token%}
@@ -27,5 +26,19 @@
         </div>
         {%endfor%}
     </form>
+</div>
+<footer class="footer">
+    <nav>
+        <a href="{% url 'index' %}">
+            <div class="bottom_nav_item"><i class="fas fa-home fa-2x"></i></div>
+        </a>
+        <a href="{% url 'tasklist' %}">
+            <div class="bottom_nav_item"> <i class="fas fa-list fa-2x"></i></div>
+        </a>
+        <a href="{% url 'mypage' %}">
+            <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
+        </a>
+    </nav>
+</footer>
 </div>
 {%endblock%}    

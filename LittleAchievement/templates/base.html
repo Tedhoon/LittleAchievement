@@ -4,25 +4,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
     <title>개발의 명수</title>
     <script src="https://kit.fontawesome.com/703c3b8202.js" crossorigin="anonymous"></script>
     <link rel="icon" href="{% static 'images/명수.png' %}" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="jquery.fittext.js"></script>
+    <script>
+        jQuery("#responsive_headline").fitText();
+    </script>
     {% block extrahead %}
 
     {% endblock %}
 </head>
 
 <body>
-    <div class="container">
-        <img  src="{% static 'images/main.png' %}" alt="" class='back_img'>
 
         {% block content %}
         {% endblock %}
 
 
-
+<!--
         <div class="bottom_nav">
             <a href="{% url 'index' %}">
                 <div class="bottom_nav_item"><i class="fas fa-home fa-2x"></i></div>
@@ -34,7 +37,7 @@
                 <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
             </a>
         </div>
-    </div>
+-->
 
 </body>
 
