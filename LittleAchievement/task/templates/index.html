@@ -23,7 +23,8 @@
 <form method="post" action="{% url 'task_managing'%}">
     {%csrf_token%}
 
-     for my_task in all_my_task %}
+   
+        {% for my_task in all_my_task %}
 
 
        
@@ -41,5 +42,6 @@
        
         {%endfor%}
 
+    
 </form>
 {%endblock%}
