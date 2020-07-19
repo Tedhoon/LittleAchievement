@@ -23,7 +23,7 @@ class ChangeCheckingMiddleware:
 
                     DayLog.objects.create(user = active_user, date = temp_date) #날짜가 바뀌면 오늘의 로그를 만들어주고
 
-                    task_list = [i.name for i in CommonTask.objects.filter(maker = User.objects.get(username="jang") ).order_by('?')[0:4]] #랜덤으로 섞어서 4개의 공통 mission을 가져온다.
+                    task_list = [i.name for i in CommonTask.objects.filter(maker = User.objects.get(username="myungsu") ).order_by('?')[0:4]] #랜덤으로 섞어서 4개의 공통 mission을 가져온다.
                     print(task_list)
                     change_task_list = MyTask.objects.filter(user=active_user) #기존의 TaskList를 들고와서 하루가 지났으니 is_checked를 업데이트 해주도록 하자
                     for one_task in change_task_list:  #하나하나 돌면서 update를 해주는데

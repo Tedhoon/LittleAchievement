@@ -12,7 +12,7 @@ class CommonTask(models.Model):
     tags = models.CharField('태그', max_length=200, default="일상")
     period = models.PositiveIntegerField("기간", default = 1)
     is_list = models.CharField("리스트여부", max_length=10 ,default="False",blank=True )
-
+    image = models.ImageField('이미지', default="None")
     created = models.DateTimeField(editable=False, default=timezone.now)
 
 

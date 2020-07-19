@@ -4,7 +4,7 @@ from .models import CommonTask,MyTask,DetailTaskList
 # Register your models here.
 
 class CommonTaskAdmin(admin.ModelAdmin):
-    list_display = ['maker', 'name','tags','period','is_list','created']
+    list_display = ['maker', 'name','tags','period','is_list','created',"image"]
 
 class MyTaskAdmin(admin.ModelAdmin):
     list_display = ['user', 'task','created','is_checked'] 

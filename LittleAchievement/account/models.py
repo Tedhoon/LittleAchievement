@@ -13,7 +13,7 @@ from task.models import CommonTask,MyTask
 @receiver(post_save, sender=User)
 def create_common_task(sender, instance, created, **kwargs):
     if created:
-        task_list = CommonTask.objects.filter(maker = User.objects.get(username="jang") ).order_by('?')[0:4]
+        task_list = CommonTask.objects.filter(maker = User.objects.get(username="myungsu") ).order_by('?')[0:4]
         for one_task in task_list:
             MyTask.objects.create(user=instance,task=one_task)
     
