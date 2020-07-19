@@ -20,6 +20,9 @@ body{
     height: 100vh;
     overflow: hidden;
 }
+li{
+    list-style: none;
+}
 a{ color:rgb(255, 255, 255); text-decoration: none; }
 a:hover { color: rgb(163, 163, 163); text-decoration: none;}
 
@@ -37,6 +40,16 @@ a:hover { color: rgb(163, 163, 163); text-decoration: none;}
     width: 100vw;
     height: 100vh;
     background: url('../images/main.png');
+    background-size: cover;
+    background-position: center;
+    margin: 0em;
+    text-align: center;
+    align-items: center;
+}
+#mypage_container{
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/mypage.png');
     background-size: cover;
     background-position: center;
     margin: 0em;
@@ -90,8 +103,39 @@ display: inline;
     letter-spacing: 5px;
     color: #FFFAEF;
 }
+.today_title{
+    margin-top: 5vw;
+    padding: 2vw;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 5vw;
+    line-height: 133.5%;
+    /* or 33px */
+
+    letter-spacing: 0.14em;
+
+    color: #FFFFFF;
+
+    text-shadow: -7px 7px 4px rgba(0, 0, 0, 0.60);
+
+}
+.today_title_2{
+    padding: 4vw;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 4vw;
+    line-height: 133.5%;
+    /* or 33px */
+
+    letter-spacing: 0.14em;
+
+    color: #FFFFFF;
+
+    text-shadow: -7px 7px 4px rgba(0, 0, 0, 0.60);
+}
 
 .btn_orange{
+    display: inline-block;
     width: 368px;
     height: 141px;
     background: linear-gradient(122.58deg, rgba(255, 172, 140, 0.848958) 38.25%, rgba(255, 140, 142, 0) 103.43%);
@@ -106,6 +150,13 @@ display: inline;
     letter-spacing: 0.14em;
 
     color: #FFFFFF;
+    margin: 3vw;
+}
+.today_list{
+    padding: 0em;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
 }
 
 .page_title{
@@ -136,7 +187,7 @@ display: inline;
     padding-bottom: 5%;
     font-style: normal;
     font-weight: normal;
-    font-size: 9vw;
+    font-size: 8vw;
     line-height: 133.5%;
     /* identical to box height, or 48px */
 
@@ -191,10 +242,11 @@ display: inline;
 }
 
 .btn_darkblue{
+    margin: 3vw;
     display: inline-block;
     width: 30vw;
     height: 10vw;
-    border: grey 1px solid;
+    border: 0em;
     background: #0A295D;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -208,7 +260,9 @@ display: inline;
     color: #FFFFFF;
 }
 
-
+.bottom_nav > a:hover{
+    color:#9186f3
+}
 
 
 .input_class{
@@ -225,3 +279,60 @@ display: inline;
    input:focus{ 
        border: none;
    }
+
+.footer{
+    display: block;
+    background: transparent;
+    position:absolute;
+    bottom:0;
+}
+
+nav{
+    height: 8vh;
+    width: 100vw;
+    background: transparent;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.fas fa-user fa-2x{
+    width: 3vw;
+    height: auto;
+}
+
+#scroll-page{
+    height:60vh;
+    overflow-y: scroll;
+}
+#scroll-page-today{
+    margin-top: 5vw;
+    height: 70vh;
+    overflow-y: scroll;
+}
+.mypage_user{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 5vw;
+    line-height: 133.5%;
+    /* or 33px */
+
+    letter-spacing: 0.14em;
+
+    color: #FFFFFF;
+
+    text-shadow: -7px 7px 4px rgba(0, 0, 0, 0.60);
+    
+}
+.mypage_user span{
+    margin: 2vw;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 7vw;
+    line-height: 133.5%;
+    letter-spacing: 0.14em;
+
+    color: #FFFFFF;
+
+    text-shadow: -7px 7px 4px rgba(0, 0, 0, 0.60);
+
+}

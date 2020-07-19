@@ -12,45 +12,47 @@
 <div id="index_container">
     
         {% if user %}
-        <p> {{user}} 님의 구독 리스트</p>
+        <p class="today_title"> {{user}} 님의 구독 리스트</p>
         {% endif %} 
-        완료한 task : {{complete_task}} | 오늘의 task : {{total_task}}
+        <p class="today_title_2">완료한 task : {{complete_task}} | 오늘의 task : {{total_task}}</p>
   
-
+    <div id="scroll-page-today">
     <form method="post" action="{% url 'task_managing'%}">
         {%csrf_token%}
 
-        <ul>
+        
             {% for my_task in all_my_task %}
 
 
             <li>
+                <div class="btn_orange">
                 {%if my_task.task.detailtasklist_set.all %}
                 {{my_task|dayTask}}
                 {%else%}
                 {{my_task.task}}
                 {%endif%}
-                <button type="submit" name="checking_task" value="{{my_task.id}}"> 오늘 했어요! </button>
+                <button class="today_btn" type="submit" name="checking_task" value="{{my_task.id}}"> 오늘 했어요! </button>
                 {% if not my_task.task.maker.is_superuser %}
-                <button type="submit" name="unsubscribe_task" value="{{my_task.id}}"> 다른일 하기 </button>
+                <button claass="today_btn" type="submit" name="unsubscribe_task" value="{{my_task.id}}"> 다른일 하기 </button>
                 {%endif%}
+                </div>
             </li>
             {%endfor%}
-
-        </ul>
-    </form>
-    <div data-role="footer" data-position="fixed" data-id="footer">
-        <nav data-role="navbar">
+        
+        
+    </form></div>
+    <footer class="footer">
+        <nav>
             <a href="{% url 'index' %}">
                 <div class="bottom_nav_item"><i class="fas fa-home fa-2x"></i></div>
             </a>
             <a href="{% url 'tasklist' %}">
                 <div class="bottom_nav_item"> <i class="fas fa-list fa-2x"></i></div>
             </a>
-            <a href="{% url 'tasklist' %}">
+            <a href="{% url 'mypage' %}">
                 <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
             </a>
         </nav>
-    </div>
+    </footer>
 </div>
 {%endblock%}

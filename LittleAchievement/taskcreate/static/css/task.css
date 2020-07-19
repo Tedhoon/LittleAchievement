@@ -78,6 +78,14 @@ li{
     opacity: 90%;
 }
 
+.button:active, .button:focus{
+    outline: none;
+}
+.btn_disabled ,.list_right_disabled{
+    background-color: #79808b;
+    font-size:1.4rem;
+    cursor: default;
+}
 .add_btn{
     background-color: white;
 }
@@ -92,17 +100,39 @@ li{
     left:-1rem;
 }
 ::-webkit-scrollbar-track-piece {
-  background-color: #ffffff;
+  background-color: #ffffff57;
       border-radius: 0.4rem;
 
   /* background-color: #ffffff; */
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 1rem;
-  background-color: #aaa;
+  background-color: rgba(6, 88, 211, 0.911);
       border-radius: 0.4rem;
 
 }
 
+.form_wrap{
+padding:0 2rem;
+width:59.5vh;
+    position: relative;
+
+}
 
 
+h1{
+    margin-top:-12rem;
+    margin-bottom:3rem;
+}
+
+@media(max-width:400px){
+    .form_wrap{
+        width:unset;
+    }
+    .each_list_right{
+        width:40%;
+    }
+    .task_create_btn{
+        font-size:1.4rem;
+    }
+}

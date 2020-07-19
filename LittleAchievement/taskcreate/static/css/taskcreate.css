@@ -1,21 +1,18 @@
 .container{
     justify-content: unset;
 }
-form{
-    margin-top:5rem;
-}
+
 
 .dropdown,.dropdown2{
     display: inline-block;
-    flex:1;
-    padding:1rem;
+    width: 60vw;
+    height: 7vh;
     box-sizing:border-box;
 
     border-radius: 0.4rem;
     border:solid 1px #8c8c8c;
     background-color: white;
 
-    position: relative;
     cursor:pointer;
 
 }
@@ -34,13 +31,11 @@ form{
     border-radius: 0.4rem;
     position: absolute;
     
-    margin-top:1.2rem;
-    margin-left:-1rem;
+    
 
     box-sizing:border-box;
     width:100%;
 
-    overflow: hidden;
     display: none;
     z-index:5;
 }
@@ -51,6 +46,7 @@ form{
 
 
 .dropdown_item,.dropdown2_item{
+    width: 10vw;
     padding:1rem;
     text-align: center;
     font-weight: bold;
@@ -103,6 +99,9 @@ form{
 
 }
 
+#id_is_list{
+    display: none;
+}
 #id_is_list:checked + #fake_is_list > #toggle_btn{
     /* border:2px solid green; */
     background-color:#408cf0c7;
@@ -121,19 +120,24 @@ form{
 }
 .tc_input_wapper{
 
-    padding:0 3rem;
-    margin:4rem 0 ;
+    margin: 5vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .tc_input_wapper label
-{    width:6rem;
-    display: inline-block;
-    color:#ffffffc2;
-    font-size:1.5rem;
-    font-weight: bold;
+{  
+    margin: 2vw;
+    font-size: 5vw;
+    line-height: 133.5%;
+    /* identical to box height, or 32px */
+    
+    letter-spacing: 0.14em;
+    
+    color: #FFFFFF;
+    
+    text-shadow: -5px 5px 4px rgba(0, 0, 0, 0.60);
 }
 
 .tc_dropdown_wapper .dropdown{
@@ -155,18 +159,26 @@ form{
 }
 
 .tc_dropdown_wapper{
-    padding:0 3rem;
-    margin:4rem 0 ;
+    
+    margin: 3vw;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 }
 
 .drop_label{
-    font-size:1.5rem;
-        color:#ffffffc2;
-    font-weight: bold;
-    width:6rem;
+    display: inline-block;
+    margin: 2vw;
+    font-size: 5vw;
+    line-height: 133.5%;
+    /* identical to box height, or 32px */
+    
+    letter-spacing: 0.14em;
+    
+    color: #FFFFFF;
+    
+    text-shadow: -5px 5px 4px rgba(0, 0, 0, 0.60);
+}
 }
 
 input[type="checkbox"]{
@@ -174,16 +186,24 @@ input[type="checkbox"]{
 }
 
 .toggle_label{
-     font-size:1.5rem;
-        color:#ffffffc2;
-    font-weight: bold;
-    margin-right:3rem;
+    margin: 2vw;
+    font-size: 5vw;
+    line-height: 133.5%;
+    /* identical to box height, or 32px */
+    
+    letter-spacing: 0.14em;
+    
+    color: #FFFFFF;
+    text-align: center;
+    text-shadow: -5px 5px 4px rgba(0, 0, 0, 0.60);
+    
 }
 .tc_toggle_wrapper{
-    padding:0 3rem;
-    margin:4rem 0 ;
+    margin: 5vw;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+}
 }
 #task_list_area{
     max-height:12rem;

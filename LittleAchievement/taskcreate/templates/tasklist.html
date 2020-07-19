@@ -1,8 +1,8 @@
 {%extends 'base.html'%}
 {%load static%}
 {% block extrahead %}
+
 <link rel="stylesheet" href="{% static 'css/task.css' %}">
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 {% endblock %}
 
@@ -19,7 +19,7 @@
 
     <h1> 선택하지 못합니다.</h1>
     {%for one_task in task_list %}
-
+ 
     <li>
         <div class="each_list">
 
@@ -39,8 +39,9 @@
 
     <p class="subscribepage_title">소소한 일상구독</p>
     <p id ="subscribe_butitle">다양한 플랜을 구독해 하루에 생기를 더해보세요!</p>
-    {%for one_task in task_list %}
-
+<div id="scroll-page">    
+{%for one_task in task_list %}
+    
     <li>
         <div class="each_list">
             <div style="display: flex; 
@@ -61,26 +62,27 @@
         </div>
     </li>
     {%endfor%}
-
-    {%endif%}
+</div>
+    
+</form>
+{%endif%}
     <a href="{% url 'taskcreate'%}">
         <div class="btn_darkblue">
             +
         </div>
     </a>
-</form>
-<div data-role="footer" data-position="fixed" data-id="footer">
-    <nav data-role="navbar">
-        <a href="{% url 'index' %}">
-            <div class="bottom_nav_item"><i class="fas fa-home fa-2x"></i></div>
-        </a>
-        <a href="{% url 'tasklist' %}">
-            <div class="bottom_nav_item"> <i class="fas fa-list fa-2x"></i></div>
-        </a>
-        <a href="{% url 'tasklist' %}">
-            <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
-        </a>
-    </nav>
-</div>
+    <footer class="footer">
+        <nav>
+            <a href="{% url 'index' %}">
+                <div class="bottom_nav_item"><i class="fas fa-home fa-2x"></i></div>
+            </a>
+            <a href="{% url 'tasklist' %}">
+                <div class="bottom_nav_item"> <i class="fas fa-list fa-2x"></i></div>
+            </a>
+            <a href="{% url 'mypage' %}">
+                <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
+            </a>
+        </nav>
+    </footer>
 </div>
 {%endblock%}

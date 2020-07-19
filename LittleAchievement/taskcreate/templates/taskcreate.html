@@ -15,7 +15,7 @@
         {%csrf_token%}
         {% for field in form %}
             {%if not field.label == "Maker" and not field.label == "태그" and not field.label == "기간" and not field.label == "리스트여부" %}
-            <div class="input_class">
+            <div class="tc_input_wapper">
             {%if field.label == "할 일" %}
             <label for ="id_name">할 일</label>
             {%elif field.label == "설명" %}
@@ -38,7 +38,7 @@
                     {%endfor%}
                 </div>
             </div>
-
+        
             <div class="drop_label"> 기간 </div>
 
             <div class="dropdown2">
@@ -53,6 +53,7 @@
                 </div>
             </div>
         </div>
+       
         <div class="tc_toggle_wrapper">
 
             <label class="toggle_label" for="id_is_list">단일/리스트</label>
@@ -71,5 +72,5 @@
     </form>
 
     <script type="text/javascript" src="{% static 'js/task.js'%}"></script>
-</div>
+</div> </div>
 {%endblock%}

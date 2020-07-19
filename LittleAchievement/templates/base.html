@@ -21,7 +21,6 @@
 
 <body>
 
-
         {% block content %}
         {% endblock %}
 
@@ -34,7 +33,7 @@
             <a href="{% url 'tasklist' %}">
                 <div class="bottom_nav_item"> <i class="fas fa-list fa-2x"></i></div>
             </a>
-            <a href="#">
+            <a href="{% url 'mypage' %}">
                 <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
             </a>
         </div>
