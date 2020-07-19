@@ -1,45 +1,71 @@
-# 규약
+# 작지만 소중해 프로젝트
 
-# Commit Message Format
+![Organizer](https://img.shields.io/badge/organizer-개발의_명수-yellow.svg)
+![stack](https://img.shields.io/badge/stack-django<3.0.8-blue.svg)
+![deploy](https://img.shields.io/badge/deploy-docker-red.svg)
+
+>  무기력한 일상에 활력 되찾기 프로젝트
+
+<img src="./images/작소.jpg" align="center">
+
+<br>
+
+:hash:  *ANGELHACK-SEOUL 2020*
+
+:hash:  *개발의 명수 팀*
+
+:hash:  [*패스트캠퍼스*](https://www.fastcampus.co.kr/)
+
+:hash:  [*커먼컴퓨터*](https://ainize.ai/dashboard)
+
+[![Run on Ainize](https://ainize.ai/static/images/run_on_ainize_button.svg)](https://littleachievement-tedhoon.endpoint.ainize.ai/)
+
+
+## 코로나 블루 해결법 💁‍♀️
+<img src="./images/la.jpg">
+
+
+## 비지니스 모델
+<img src="./images/BM.jpg">
+
+
+
+# ABOUT DEV 👨‍💻
+
+## branch 👻
+
+|branch|role|
+|---|---|
+|`master`|루트 & 배포|
+|`develop`|개발 중간 저장소|
+|`chihun`|backend & frontend|
+|`lim`|frontend|
+|`tedhoon`|devops|
+|`hyerim`|project manage|
+|`hyewon`|design & frontend|
+
+## ✔ Commit Message Format 
+
 - [add] 추가한 내용
 - [mdf] 수정한 내용
 - [del] 지운 내용
 - [merge] 병합
 
-> 예시 : [add] main app 생성
+```bash
+ex) main app 생성 시 
+$ git commit -m "[add] main app 생성"
+```
 
-# branch
-- 루트 및 배포 : master
-- 개발 : develop
-- 개인 : 각자 닉네임 or 이름
+## ✔ 협업 가이드라인 
 
-# 협업 순서
+`[개발 단계]`
 
-[개발 단계]
 1. 각자의 branch에서 작업
-2. 각자의 branch에서 develop에 Pull Request
-3. develop branch에서 최소 1명 검열 후 merge 
+2. 각자의 branch에서 develop branch에 Pull Request
+3. 최소 1명 검열 후 develop branch에서 모든 개발 코드 merge 
 
-[배포 단계]
+`[배포 단계]`
 
-4. develop branch에서 master에 Pull Request
-5. master branch에서 merge
+4. develop branch에서 master에 MERGE
 
 
-### 치훈
-* 2020-07-16
-  * Sign in , Sign up Flow 개선 작업 및 Authenticate수정
-  * 구독 기능구현
-  * 매일 Checklist초기화 되는 기능 구현
-  * 매일 달성률 기록할수있는 Model생성
-  * 유저 생성시 default mission random으로 분배
-* 2020-07-17
-  * Task CRUD 기능 구현
-  * 전체 기록을 남길 필요성이 있어서 Checking되는 부분 totalLog로 기록
-  * Task에 일수 추가 기능
-  * Task Model에 desc , tags, period 추가
-  * 페이지별 요소 재분배, 템플릿 상속
-  * Task Create Page change display field
-  * Task Create PAge Period Task List Toggle ADD
-  * Task Update 구현했는데 숨겨놓음
-  * Task List도 했다는 체크 할수 있게 함
