@@ -13,6 +13,7 @@ WORKDIR /app/LittleAchievement/
 
 # RUN pip install -r /app/LittleAchievement/requirements.txt  
 RUN pip install django
+RUN pip install pillow
 # requirements.txt에 적혀있는 pip 패키지들을 설치합니다.
 # requirements.txt경로 /home/ubuntu/LittleAchievement/config/requirements.txt
 
@@ -40,9 +41,9 @@ EXPOSE 8000
 # COPY . .
 # WORKDIR /app/LittleAchievement
 
-CMD ["python", "manage.py", "makemigrations"]
+# CMD ["python", "manage.py", "makemigrations"]
 
-CMD ["python", "manage.py", "migrate"]
+# CMD ["python", "manage.py", "migrate"]
 
 # CMD ["python", "manage.py", "collectstatic"]
 
