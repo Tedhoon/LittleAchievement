@@ -8,13 +8,14 @@
 
 {%block content%}
 
-    
+
+<div id='subscribe_container'>
     <form method="POST">
-        <h1 class="tc_title"> Task Creates</h1>
+        <p class="page_title"> Task 만들기 </p>
         {%csrf_token%}
         {% for field in form %}
             {%if not field.label == "Maker" and not field.label == "태그" and not field.label == "기간" and not field.label == "리스트여부" %}
-            <div class="tc_input_wapper">
+            <div class="input_class">
             {%if field.label == "할 일" %}
             <label for ="id_name">할 일</label>
             {%elif field.label == "설명" %}
@@ -70,5 +71,5 @@
     </form>
 
     <script type="text/javascript" src="{% static 'js/task.js'%}"></script>
-
+</div>
 {%endblock%}

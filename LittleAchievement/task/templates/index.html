@@ -9,48 +9,48 @@
 
 
 {%block content%}
-<div class="index">
-    {% if user %}
-    <p>현재 접속자 : {{user}}</p>
-    {% endif %}
-
-    <!-- <ul>
-        <form method="post" action="{% url 'subscribe'%}">
-            {%csrf_token%}
-            {%for one_task in all_common_task %}
-
-            
-            
-                <li>{{one_task.name}}(출제자 : {{one_task.maker}}) <button type="submit" name="subscribe_task" value="{{one_task.id}}"> 구독 </button></li>  
-        
+<div id="index_container">
+    
+        {% if user %}
+        <p> {{user}} 님의 구독 리스트</p>
+        {% endif %} 
+        완료한 task : {{complete_task}} | 오늘의 task : {{total_task}}
   
+
+    <form method="post" action="{% url 'task_managing'%}">
+        {%csrf_token%}
+
+        <ul>
+            {% for my_task in all_my_task %}
+
+
+            <li>
+                {%if my_task.task.detailtasklist_set.all %}
+                {{my_task|dayTask}}
+                {%else%}
+                {{my_task.task}}
+                {%endif%}
+                <button type="submit" name="checking_task" value="{{my_task.id}}"> 오늘 했어요! </button>
+                {% if not my_task.task.maker.is_superuser %}
+                <button type="submit" name="unsubscribe_task" value="{{my_task.id}}"> 다른일 하기 </button>
+                {%endif%}
+            </li>
             {%endfor%}
-        </form>
-    </ul> -->
 
-    <h5>내 구독 리스트</h5> 완료한 task : {{complete_task}} | 오늘의 task : {{total_task}}
+        </ul>
+    </form>
+    <div data-role="footer" data-position="fixed" data-id="footer">
+        <nav data-role="navbar">
+            <a href="{% url 'index' %}">
+                <div class="bottom_nav_item"><i class="fas fa-home fa-2x"></i></div>
+            </a>
+            <a href="{% url 'tasklist' %}">
+                <div class="bottom_nav_item"> <i class="fas fa-list fa-2x"></i></div>
+            </a>
+            <a href="{% url 'tasklist' %}">
+                <div class="bottom_nav_item"> <i class="fas fa-user fa-2x"></i></div>
+            </a>
+        </nav>
+    </div>
 </div>
-
-<form method="post" action="{% url 'task_managing'%}">
-    {%csrf_token%}
-
-    <ul>
-        {% for my_task in all_my_task %}
-
-
-        <li>
-            {%if my_task.task.detailtasklist_set.all %}
-            {{my_task|dayTask}}
-            {%else%}
-            {{my_task.task}}
-            {%endif%}
-            <button type="submit" name="checking_task" value="{{my_task.id}}"> 오늘 했어요! </button>
-            {% if not my_task.task.maker.is_superuser %}
-            <button type="submit" name="unsubscribe_task" value="{{my_task.id}}"> 다른일 하기 </button>
-            {%endif%}
-        </li>
-        {%endfor%}
-
-    </ul>
-</form>
 {%endblock%}

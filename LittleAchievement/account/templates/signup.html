@@ -6,14 +6,15 @@
 {% endblock %}
 
 {% block content %}
-<div class='login_letter'>
-    <p> 회원가입</p>
-</div>
-<div class="register_form">
-    <form method="POST" action="{% url 'signup' %}">
-        {% csrf_token %}
-        {{ RegisterForm.as_p }}
-        <input type="submit" value="다음" class="input_class_login">
-    </form>
+<div id="login_container">
+    <p class='page_title'> 회원가입</p>
+
+    <div class="login_form">
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            {{ RegisterForm.as_p }}
+            <div class="pink"><input type="submit" value="다음" class="btn_pink"></div>
+        </form>
+    </div>
 </div>
 {% endblock %}
