@@ -14,6 +14,7 @@ WORKDIR /app/LittleAchievement/
 # RUN pip install -r /app/LittleAchievement/requirements.txt  
 RUN pip install django
 RUN pip install pillow
+RUN pip install imagekit
 # requirements.txt에 적혀있는 pip 패키지들을 설치합니다.
 # requirements.txt경로 /home/ubuntu/LittleAchievement/config/requirements.txt
 
