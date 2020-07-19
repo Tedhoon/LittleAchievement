@@ -12,7 +12,7 @@
 <div class="register_form">
     <form method="POST" action="{% url 'signup' %}">
         {% csrf_token %}
-        {{ RegisterForm.as_p }}
+        {{ RegisterForm }}
         <input type="submit" value="다음" class="input_class_login">
     </form>
 </div>

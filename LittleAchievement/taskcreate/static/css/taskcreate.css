@@ -240,3 +240,10 @@ input[type="checkbox"]{
     display: inline-block;
 
 }
+@media(max-width:400px){
+  
+    form{
+        width:100vw;
+    }
+ 
+}
