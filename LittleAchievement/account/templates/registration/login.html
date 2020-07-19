@@ -12,7 +12,7 @@
 <div class="login_form">
     <form method="POST" action="{% url 'login' %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}
         <input type="submit" value="LOGIN" class='input_class_login'>
     </form>
 </div>

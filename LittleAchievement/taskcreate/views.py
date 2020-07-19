@@ -52,10 +52,20 @@ class TaskList(ListView):
     # paginate_by = 50
     template_name = 'tasklist.html'
 
+
+    def get(self, request, *args, **kwargs):
+        self.user = request.user
+        print(self.user )
+        # if self.user == "AnonymousUser":
+        #     return redirect('signin')
+        return super().get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
+        
+        
         context = super().get_context_data(**kwargs)
         context['task_list'] = CommonTask.objects.all()
-        mytask_qs_list  = MyTask.objects.filter(user = self.request.user)
+        mytask_qs_list  = MyTask.objects.filter(user =self.user)
         mytask_list = [i.task for i in mytask_qs_list]
         context['mytask_list'] = mytask_list
         if len(mytask_list) == 5:
@@ -63,6 +73,8 @@ class TaskList(ListView):
 
         return context
 
+    
+    
 # class TaskUpdate(UpdateView):
 #     model = CommonTask
 #     fields = ['name','maker','desc','tags','period',"is_list"]
